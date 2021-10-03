@@ -7,35 +7,6 @@ layout: true
 
 ---
 
-class: impact full-width
-
-.impact-wrapper[
-# {{title}}
-]
-
-???
-
----
-
-class: transition
-
-## Mario Fernandez
- 
-### Staff Engineer
-### Wayfair
- 
----
-
-class: impact
-
-.impact-wrapper[
-# A problem to solve
-]
-
-???
-
----
-
 # Description (not part of the presentation)
 
 Do you believe in “you build it, you run it”? What if you have on-call rotations, where you are responsible 24x7 for the health of a system? Nothing is quite so infuriating as a collection of poorly structured alerts that trigger randomly.
@@ -59,6 +30,71 @@ On-Call is an increasing reality for developers, especially when  a site has str
 
 I want to talk about making that experience bearable. I’ve seen developers struggle with the operational burden over three companies already, and I think there are many actionable suggestions to improve it and build something sustainable.
 
+---
+
+class: impact full-width
+
+.impact-wrapper[
+# {{title}}
+]
+
+---
+
+# Let's talk On-Call for a second
+
+---
+
+monitor production systems
+
+---
+
+24x7
+
+---
+
+You build it, you run it
+
+---
+
+
+# On-Call can suck
+
+???
+
+- if you have been part of a rotation you probably know what I mean
+
+---
+
+class: center middle
+
+## Bad Night
+
+.image-grid[
+![call](images/call.png)
+![sms](images/sms.png)
+]
+
+---
+
+class: center middle
+
+## Unhelpful Alerts
+
+![unhelpful-alarm](images/unhelpful-alarm.png)
+
+---
+
+# Agenda
+
+---
+
+class: transition
+
+## Mario Fernandez
+ 
+### Staff Engineer
+### Wayfair
+ 
 ---
 
 # Enemies
