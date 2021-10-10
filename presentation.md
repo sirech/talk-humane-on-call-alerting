@@ -288,7 +288,6 @@ class: middle
 ## This alert is not at the right level
 ## Can't remember last time we adapted our alerts
 
-
 ---
 
 class: transition
@@ -302,33 +301,46 @@ class: transition
 
 class: center impact
 
-# What Is the Goal of Alerting?
+# Alerting 101
 
 ---
 
-Detect problems in production before your customers do
+class: center middle
 
-.link[https://hceris.com/monitoring-alerts-that-dont-suck/]
+# Detect problems in production before your customers do
 
----
-
-## Avoid false negatives
-
-Trigger when there's a problem
+.bottom-right[https://hceris.com/monitoring-alerts-that-dont-suck/]
 
 ---
 
-## Avoid false positives
+class: center middle
 
-Don't trigger for non-issues
+# Avoid false negatives
+## _Trigger when there's a problem_
 
 ---
 
-## The three golden signals
+class: center middle
 
-Rate - Number of requests
-Error Rate - % of failed requests
-Duration - Time to fulfill a request
+# Avoid false positives
+## _Don't trigger alarms for non-issues_
+
+---
+
+class: center middle
+
+# The Four Golden Signals
+
+---
+
+class: middle
+
+## Latency
+## Traffic
+## Errors
+## Saturation
+
+.bottom-right[https://sre.google/sre-book/monitoring-distributed-systems/]
 
 ---
 
