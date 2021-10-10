@@ -280,7 +280,6 @@ class: impact full-width
 
 class: middle
 
-
 ## Noisy alerts
 ## It's always been like this
 ## We do things by hand around here
@@ -350,35 +349,67 @@ class: center transition
 
 ---
 
-vast majority of alerts triggers automatically
+class: center middle
+
+# Vast majority of alerts trigger automatically
+
+???
+
+- By that I mean that #automated alerts >>> #manually reported alerts
+- If you're not in that situation, not everything I'm saying will apply to you
 
 ---
 
-what is the source of noise in alerts?
+class: center middle
+
+# A lot of the noise is *accidental*
+
+???
+
+- Akin to the concept of accidental complexity
+-- A certain amount of complexity is unavoidable
+-- However, the wrong architecture can introduce avoidable complexity
 
 ---
 
-accidental noise
+class: center middle
+
+# Triggering an alert when a pod in Kubernetes restarts
+
+???
+
+- Kubernetes restarts pods all the time without intervention. It's kind of the point of using it
+- Maybe a more accurate statement is that trying to monitor how k8s works is a recipe for frustration
 
 ---
 
-example -> alert k8s pod restarts
+class: center middle
+
+# Warnings are evil
+## Make them failures or ignore them
+
+???
+
+- That's a strong statement, so I'm sure there are exceptions
+- Still, making decisions more binary helps reducing the noise
 
 ---
 
-warnings -> make them failures or ignore
+class: center middle
+
+# Delete things you don't need!
 
 ---
 
-the solution: delete them!
+class: center middle
+
+# I'm serious, delete them and thank me later
 
 ---
 
-it's ok to delete stuff that doesn't bring value
+class: center middle
 
----
-
-Learning 1 -> Prune
+# Learning 1️⃣  ➡️ Be ruthless in reducing the noise
 
 ---
 
@@ -560,138 +591,230 @@ class: center transition
 
 # Fighting Against the Tools
 
----
+???
 
-history about itsm, a crappy bespoke tool that made everybody's life miserable
-
----
-
-no auto closing
+- I've said in point 2 that technology alone is not the solution
+- However, good tooling has a clear place in alerting: Make your life easier
+- Two features that I want to mention
 
 ---
 
-no grouping
+class: center middle
+
+# Auto closing
+
+???
+
+- if the alert gets opened and closed, it should be reflected in the tool and not add to the noise
 
 ---
 
-counter example -> pagerduty
+class: center middle
+
+# Auto grouping
+
+???
+
+- If the same alert or similar group of alerts get triggered, that should be clearly grouped and not treated as individual alerts
 
 ---
 
-or opsgenie
+class: center middle
+
+# Conditional routing
+## Based on time (business hours vs off hours)
+## Priority (critical vs minor)
+
+???
+
+- Routing based on conditions
+-- some alerts can wait until the next day
+-- some alerts require immediate action. Others can be logged as tickets
 
 ---
 
-Learning 4 -> use tools that support you
+class: center middle
+
+# Do you take it for granted? I've learned not to
+
+???
+
+- Counter example: A tool called ITSM, in a project for a client that I won't mention
+- It had none of these features
+- I wish I had a screenshot of the tool because you would understand instantly what I mean
 
 ---
 
-# This alert is not at the right level
+class: center middle
+
+.image-grid[
+![datadog](images/datadog.png)
+![pagerduty](images/pagerduty.png)
+]
+
+???
+
+- Bottom line, use good tools. They're worth it
+- I mention DD and PD here because I'm familiar with them. There are many alternatives
 
 ---
 
-alerts that don't tell a story about business impact
+class: center middle
+
+# Learning 4️⃣  ➡️ Use tools that support you
 
 ---
 
-different concerns and levels of abstraction
+class: center transition
+
+# This Alert Is not at the Right Level
 
 ---
 
-the monitoring pyramid
-analog to the testing pyramid
+class: center middle
+
+# What's the business impact?
 
 ---
 
-- synthetic
-- RUM
-- APM
-- Infrastructure
+class: center middle
+
+# Different concerns and levels of abstraction
 
 ---
 
-dashboards can be top down from the high level down to the details
+class: center middle full-height
+background-image: url(images/monitoring-pyramid.png)
+
+???
+
+- What if we consider the different sources of monitoring like we do the testing pyramid?
+- Simulating user traffic goes at the top -> synthetics
+- We go do down progressively, like RUM or APM
+- At the bottom, the monitoring of each individual piece
 
 ---
 
-Learning 5 -> Consider the relative level of each alert
+class: center middle full-height
+background-image: url(images/dashboard.png)
+
+???
+
+- One think that I've been doing lately is building dashboards top to bottom. By that I mean start with general metrics, user perspective and go down and drill into individual services
+- If you're answering an alert, the first question has to be: Do I need to do something?
 
 ---
 
-# Can't remember last time we adapted our alerts
+class: center middle
+
+# Learning 5️⃣  ➡️ Consider the abstraction level
 
 ---
 
-finding the right threshold feels like a treasure hunt
+class: center transition
+
+# Can't Remember the Last Time we Tuned our Alerts
 
 ---
 
-split alerts!
+class: center middle
+
+# Finding the right threshold feels like a treasure hunt
 
 ---
 
-threshold vs change% to have different angles
+class: center middle
+
+# Don't try to find the perfect alert 
+## Smaller alerts that cover different angles
 
 ---
 
-builds in top of:
+class: center middle
 
-reduce noise
-automation
-use a good tool
+# Example: Threshold vs Change%
 
----
+???
 
-tuning has a dark side
+- A very concrete example: thresholds vs change%
 
 ---
 
-I've been changing my mind about tuning
+class: center middle
+
+# Tuning builds on top of
+## Reducing noise
+## Automation
+## Using the right tool
 
 ---
 
-Constantly tuning monitors is treating the symptom, not the cause
+class: center middle
+
+# Tuning alerts is treating the symptom
+
+???
+
+- I've been changing my mind about tuning
+- There's only so much you can do
+-- If the system is unstable, good alerting will reflect that
 
 ---
 
-Learning 6 -> While tuning is important, alerting only reflects the underlying state of a system
+class: center middle
+
+# Learning 6️⃣  ➡️ Alerting only reflects the underlying state of a system
 
 ---
 
-# The alerting good practices
+class: center impact
+
+# Let's summarize the learnings
 
 ---
 
-# Alerting Good Practices
+class: middle
 
-- Noisy alerts -> Relentlessly remove noise
-- It's always been like this -> Don't get used to dysfunction
-- We do things by hand around here -> Provision alerts with code
-- Fighthing against the tools -> Use the right tooling
-- This alert is not at the right level -> The alerting pyramid
-- Can't remember last time we adapted our alerts -> Constant tuning
-
----
-
-# What about Handling those Alerts?
+## Noisy alerts
+## It's always been like this
+## We do things by hand around here
+## Fighting against the tools
+## This alert is not at the right level
+## Can't remember last time we adapted our alerts
 
 ---
 
-a different topic for a different presentation
+class: middle
+
+## Relentlessly remove noise
+## Don't get used to dysfunction
+## Provision alerts with code
+## Use the right tooling
+## The alerting pyramid
+## Constant tuning
 
 ---
 
-still, a more balanced approach to alerts has reduced the stress levels of the teams I've been on
+class: center middle
+
+# Sensible alerts are a good starting spot
 
 ---
 
-# What is the message here?
+class: center middle
+
+# But not an end!
+
+???
+
+- Even the most accurately tuned alerts will trigger
+-- How to handle them?
+-- How to improve?
+- The topic is big enough to cover book(s)
 
 ---
 
-automation, discipline and lack of conformism
+class: center middle full-width
+background-image: url(images/sre.png)
 
 ---
-
-links
-

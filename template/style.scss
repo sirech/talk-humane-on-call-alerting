@@ -296,6 +296,11 @@ blockquote {
   grid-gap: 15px;
 }
 
+.image-grid img {
+  object-fit: cover;
+  width: 100%;
+}
+
 .image-grid-1-row p {
   display: grid;
   grid-template-rows: repeat(2, 1fr);
