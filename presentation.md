@@ -344,7 +344,7 @@ class: middle
 
 ---
 
-class: center impact
+class: center transition
 
 # Noisy Alerts
 
@@ -382,69 +382,183 @@ Learning 1 -> Prune
 
 ---
 
+class: center transition
+
 # It's Always Been Like This
 
 ---
 
-yeah that alert always triggers I ignore it
+class: center middle
+
+# When that alert wakes me up I just snooze it and keep sleeping
+
+???
+
+- This is an actual quote, I'm not making it up
+-- Happened in a previous project that I joined as a Tech Lead
+- I've seen it where I work now. People get used to things that *are not* okay
 
 ---
 
-we know this doesn't work but we can't do anything about it
+class: center middle
+
+# We know this doesn't work, but we can't do anything about it
+
+???
+
+- You know how I mentioned "you build it you run it" before?
+- That only works if you actual agency to change
+- Are you a proxy to another team? That's a bad position to be in
 
 ---
 
-a personal favorite -> VMs degrade performance over time until they are unusable, keep track of convos in slack to restart it manually
+class: right full-width
+background-image: url(images/slowing-monolith.png)
+
+# The slowing monolith
+
+???
+
+- this a personal favorite
+-- a service of us depends on an old monolith. For unknown reasons, it degrades over time until the performance is unusable
+-- infra folks need to restart the VMs every now and then
+- for organizational reasons, we don't have the rights to do that, and we can't even automate the process of restarting to mitigate the pain at least
 
 ---
 
-PostMortem items ignored -> clear, unequivocal priority
+class: center middle
+
+# Ignoring Post Mortem items 😢
+
+???
+
+- I'm assuming that you do post mortems after incidents
+-- If not, well that's the action point
+- Even if you do them, you have to commit to prioritize them
 
 ---
 
-alerting is not just a technical artifact, it requires organizational alignment
+class: center middle
+
+# Alerting isn't just about technology. It's about organizational alignment
+
+???
+
+- To quote a former colleague: "You don't have a technology problem, you have an organizational one"
+- You notice that this part has nothing to do with tools or infrastructure
 
 ---
 
-Learning 2 -> commit to act
+class: center middle
+
+# Learning 2️⃣  ➡️ Commit to action
 
 ---
 
-class: center impact
+class: center transition
 
-# We do things by hand around here
-
----
-
-automation is crucial in alerting
+# We Do Things by Hand Around Here
 
 ---
 
-Benefits
+class: center middle
 
-- mainteinance
-- spreading best practices
-- granularity
+# Automation is crucial in alerting
 
 ---
 
-any serious monitoring provider has APIs
+class: middle
+
+## Maintenance
+
+--
+
+## Granularity
+
+--
+
+## Spread best practices
 
 ---
 
-example -> terraform alert
+class: center middle
+
+## Any serious monitoring provider allows automation
+
+.bottom-right[https://registry.terraform.io/browse/providers?category=logging-monitoring]
 
 ---
 
-Encoding best practices through automated alerts
+class: center middle
+
+```hcl
+resource "datadog_monitor" "monitor" {
+  count = try(var.enabled, false) == true ? 1 : 0
+
+  name               = var.name
+  type               = var.type
+  query              = var.query
+  message            = var.message
+
+  monitor_thresholds {
+    warning = lookup(var.monitor_thresholds, "warning", null)
+    ok = lookup(var.monitor_thresholds, "ok", null)
+    critical = lookup(var.monitor_thresholds, "critical", null)
+  }
+
+  priority            = var.priority
+}
+```
+
+???
+
+- This is simplified for space reasons, but you should get the idea
 
 ---
 
-Learning 3 -> Automation is the only way to maintain alerts at scale
+class: center middle
+
+```hcl
+module "no_requests_flatline" {
+  source = "../../monitor"
+
+  enabled = var.enabled
+  name = "${var.service_name} ${var.env} - Latency [Flatline]"
+  query  = <<-EOT
+avg(10m):p95:trace.servlet.request by {resource_name}
+ > ${local.threshold}
+EOT
+
+  message = templatefile("${path.module}/message.md", {
+    service = var.service_name
+  })
+
+  monitor_thresholds = { critical = local.threshold }
+}
+```
 
 ---
 
-# Fighting against the tools
+class: center middle
+
+# From 1 to N to N^(a lot)
+
+???
+
+- If you want to monitor things deeply, you'll end up with a lot of alerts
+- Carrying changes is impossible if you have to do it by hand
+
+---
+
+class: center middle
+
+# Learning 3️⃣  ➡️ Automation is the only way to maintain alerts at scale
+
+---
+
+class: center transition
+
+# Fighting Against the Tools
 
 ---
 
