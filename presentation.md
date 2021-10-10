@@ -1,4 +1,4 @@
-title: Humane On-Call: Alerting doesn't have to be painful
+title: Humane On-Call
 class: animation-fade
 layout: true
 
@@ -36,33 +36,27 @@ class: impact full-width
 
 .impact-wrapper[
 # {{title}}
+## Alerting doesn't have to be painful
 ]
 
 ---
 
-class: impact full-width
+class: center middle
 
-.impact-wrapper[
-# Why?
-]
+# On-Call **is** a reality of operating production software
 
 ---
 
-people expect websites to be up at all times these days
+class: center middle
 
----
+# Let's make it as bearable as possible!
 
-mention to FB downtime on 04.10
+???
 
----
+The message of this talk is:
 
-99.95% ("three and a half nines")	4.38 hours	21.92 minutes
-
-.link[https://en.wikipedia.org/wiki/High_availability]
-
----
-
-hard to achieve if engineering is only available during business hours
+- We must make it as painless as possible
+- We can improve things
 
 ---
 
@@ -74,33 +68,107 @@ class: impact full-width
 
 ???
 
-- And thus, on-call was born
+- What is actually on-call?
 
 ---
 
-monitor production systems
+class: center middle
 
+# ❌ Constantly monitor production
 
----
+--
 
-24x7
-
----
-
-Rotations
+# ✅ Being available to handle an incident
 
 ???
 
-- one developer at a time
--- maybe a secondary
-- weekly rotations
-- carrying a pager
+- It's not an active thing.
+- It's reactive. You're available in case you're needed
+-- NOT for any incident though
 
 ---
 
-You build it, you run it
+class: center middle
+
+# 24x7
+
+---
+
+class: center middle
+
+# As part of a _rotation_
+
+---
+
+class: center middle
+
+# Primary/Secondary developer on call 
+    
+# Weekly rotations 
+
+# Carry a pager 
+
+???
+
+- how could a rotation look like? Let's think about it
+
+---
+
+class: impact full-width
+
+.impact-wrapper[
+# Why do this to ourselves?
+]
+
+---
+
+class: center middle
+
+# People expect constant availability
+
+---
+
+class: center middle full-width white 
+background-image: url(images/logos.png)
+
+???
+
+- Maybe Facebook is not the best example right now, given the massive downtime they had
+
+---
+
+class: center middle
+
+# High Availability (99,95%)
+## 21.92 minutes / month
+## 4.38 hours / year
+
+.bottom-right[https://en.wikipedia.org/wiki/High_availability]
+
+???
+
+- 3 and half nines is what Google SQL offers
+- 20 minutes per month isn't a lot! If you rollback manually and the pipeline isn't fast, it could take more than that
+
+---
+
+class: center middle
+
+# 9 to 5 ain't highly available
+
+---
+
+class: center middle
+
+# You build it, you run it
 
 .link[https://www.stevesmith.tech/blog/you-build-it-you-run-it/]
+
+???
+
+- this model is born to provide faster support for individual services
+- less handovers
+- developers have "skin in the game"
 
 ---
 
@@ -116,70 +184,110 @@ class: impact full-width
 
 ---
 
-many things can go wrong, I'm focusing on the alerting side
+class: center middle
+
+# This talk focuses on the alerting side
+## *Many* other things can go wrong
 
 ---
 
-class: middle
+class: center full-width 
+background-image: url(images/interruptions.png)
 
-## Constant Interruptions
+# Constant Interruptions
 
-![interruptions](images/interruptions.png)
+???
+
+- what if your alerts are ringing constantly
+- can be extremely disruptive to your day-to-day work
+- even moreso if the person on-call keeps working on the regular topics
 
 ---
 
-class: middle
+class: center middle
 
-## Bad Night
+# Bad Night(s)
 
 .image-grid[
 ![call](images/call.png)
 ![sms](images/sms.png)
 ]
 
+???
+
+- alerts during working hours are actually the *good* case
+- when the alerts start calling you at night is when life gets really miserable
+
+---
+
+class: center right full-height
+background-image: url(images/flaky-alerts.png)
+
+# Flakyness
+
+???
+
+- this alert triggered and resolved within two minutes
+- if you get waken up, it takes longer than that to get to a computer
+
+---
+
+class: center full-width
+background-image: url(images/unhelpful-alarm.png)
+
+# Not Actionable
+
+???
+
+- Alerts that don't have a clear action are specially annoying
+- TODO: not sure if this slide fits here
+
+---
+
+class: center full-width
+background-image: url(images/explosion.jpeg)
+
+---
+
+class: center middle
+
+# We can do better than this
+
+---
+
+class: center middle
+
+# Side Note
+## Are there reliable numbers about on-call out there?
+
+---
+
+class: impact full-width
+
+.impact-wrapper[
+# Alerting Dysfunctions
+]
+
+???
+
+- as I said I want to talk about alerting
+-- the on-call topic is much more than alerts
+- I'll be focusing the rest of the talk on alerting dysfunctions
+-- What are they
+-- Hwo to fix it
+
 ---
 
 class: middle
 
-## Unhelpful Alerts
 
-![unhelpful-alarm](images/unhelpful-alarm.png)
+## Noisy alerts
+## It's always been like this
+## We do things by hand around here
+## Fighting against the tools
+## This alert is not at the right level
+## Can't remember last time we adapted our alerts
 
----
-
-picture -> explosion
-
----
-
-we can do better than this
-
----
-
-# Side Note
-
-it's surprisingly difficult to find reliable numbers about this topic
-
----
-
-# Alerting Dysfunctions
-
-- Noisy alerts
-- It's always been like this
-- We do things by hand around here
-- Fighthing against the tools
-- This alert is not at the right level
-- Can't remember last time we adapted our alerts
-
----
-
-# Alerting Good Practices
-
-- Noisy alerts -> Relentlessly remove noise
-- It's always been like this -> Don't get used to dysfunction
-- We do things by hand around here -> Provision alerts with code
-- Fighthing against the tools -> Use the right tooling
-- This alert is not at the right level -> The alerting pyramid
-- Can't remember last time we adapted our alerts -> Constant tuning
 
 ---
 
@@ -428,7 +536,14 @@ Learning 6 -> While tuning is important, alerting only reflects the underlying s
 
 ---
 
--> alerting good practices slide
+# Alerting Good Practices
+
+- Noisy alerts -> Relentlessly remove noise
+- It's always been like this -> Don't get used to dysfunction
+- We do things by hand around here -> Provision alerts with code
+- Fighthing against the tools -> Use the right tooling
+- This alert is not at the right level -> The alerting pyramid
+- Can't remember last time we adapted our alerts -> Constant tuning
 
 ---
 
