@@ -128,8 +128,7 @@ class: center middle
 
 ---
 
-class: center middle full-width white 
-background-image: url(images/logos.png)
+<!-- .slide: data-background-image="images/logos.png" data-background-size="100% auto" -->
 
 ???
 
