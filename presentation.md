@@ -1,12 +1,3 @@
-title: Humane On-Call
-class: animation-fade
-layout: true
-
-
-<!-- This slide will serve as the base layout for all your slides -->
-
----
-
 # Description (not part of the presentation)
 
 Do you believe in “you build it, you run it”? What if you have on-call rotations, where you are responsible 24x7 for the health of a system? Nothing is quite so infuriating as a collection of poorly structured alerts that trigger randomly.
@@ -31,25 +22,18 @@ On-Call is an increasing reality for developers, especially when  a site has str
 I want to talk about making that experience bearable. I’ve seen developers struggle with the operational burden over three companies already, and I think there are many actionable suggestions to improve it and build something sustainable.
 
 ---
-
 class: impact full-width
 
-.impact-wrapper[
-# {{title}}
+# Humane On-Call
 ## Alerting doesn't have to be painful
-]
 
 ---
 
-class: center middle
-
-# On-Call **is** a reality of operating production software
+## On-Call **is** a reality of operating production software
 
 ---
 
-class: center middle
-
-# Let's make it as bearable as possible!
+## Let's make it as bearable as possible!
 
 ???
 
@@ -72,13 +56,11 @@ class: impact full-width
 
 ---
 
-class: center middle
-
-# ❌ Constantly monitor production
+## ❌ Constantly monitor production
 
 --
 
-# ✅ Being available to handle an incident
+## ✅ Being available to handle an incident
 
 ???
 
@@ -88,25 +70,19 @@ class: center middle
 
 ---
 
-class: center middle
-
-# 24x7
+## 24x7
 
 ---
 
-class: center middle
-
-# As part of a _rotation_
+## As part of a _rotation_
 
 ---
 
-class: center middle
-
-# Primary/Secondary developer on call 
+## Primary/Secondary developer on call 
     
-# Weekly rotations 
+## Weekly rotations 
 
-# Carry a pager 
+## Carry a pager 
 
 ???
 
@@ -122,9 +98,7 @@ class: impact full-width
 
 ---
 
-class: center middle
-
-# People expect constant availability
+## People expect constant availability
 
 ---
 
@@ -136,13 +110,12 @@ class: center middle
 
 ---
 
-class: center middle
+## High Availability (99,95%)
+### 21.92 minutes / month
+### 4.38 hours / year
 
-# High Availability (99,95%)
-## 21.92 minutes / month
-## 4.38 hours / year
 
-.bottom-right[https://en.wikipedia.org/wiki/High_availability]
+<span class=bottom-right>https://en.wikipedia.org/wiki/High_availability</span>
 
 ???
 
@@ -151,17 +124,13 @@ class: center middle
 
 ---
 
-class: center middle
-
-# 9 to 5 ain't highly available
+## 9 to 5 ain't highly available
 
 ---
 
-class: center middle
+## You build it, you run it
 
-# You build it, you run it
-
-.link[https://www.stevesmith.tech/blog/you-build-it-you-run-it/]
+<span class="bottom-right">https://www.stevesmith.tech/blog/you-build-it-you-run-it/<span>
 
 ???
 
@@ -183,17 +152,15 @@ class: impact full-width
 
 ---
 
-class: center middle
-
-# This talk focuses on the alerting side
-## *Many* other things can go wrong
+## This talk focuses on the alerting side
+### *Many* other things can go wrong
 
 ---
 
 class: center full-width 
-background-image: url(images/interruptions.png)
+<!-- .slide: data-background-image="images/interruptions.png" data-background-size="100% auto" -->
 
-# Constant Interruptions
+## Constant Interruptions
 
 ???
 
@@ -203,14 +170,10 @@ background-image: url(images/interruptions.png)
 
 ---
 
-class: center middle
+## Bad Night(s)
 
-# Bad Night(s)
-
-.image-grid[
 ![call](images/call.png)
 ![sms](images/sms.png)
-]
 
 ???
 
@@ -219,10 +182,9 @@ class: center middle
 
 ---
 
-class: center right full-height
-background-image: url(images/flaky-alerts.png)
+<!-- .slide: data-background-image="images/flaky-alerts.png" data-background-size="100% auto" -->
 
-# Flakyness
+## Flakyness
 
 ???
 
@@ -232,9 +194,9 @@ background-image: url(images/flaky-alerts.png)
 ---
 
 class: center full-width
-background-image: url(images/unhelpful-alarm.png)
+<!-- .slide: data-background-image="images/unhelpful-alarm.png" data-background-size="100% auto" -->
 
-# Not Actionable
+## Not Actionable
 
 ???
 
@@ -243,21 +205,16 @@ background-image: url(images/unhelpful-alarm.png)
 
 ---
 
-class: center full-width
-background-image: url(images/explosion.jpeg)
+<!-- .slide: data-background-image="images/explosion.jpeg" data-background-size="100% auto" -- >
 
 ---
 
-class: center middle
-
-# We can do better than this
+## We can do better than this
 
 ---
 
-class: center middle
-
-# Side Note
-## Are there reliable numbers about on-call out there?
+## Side Note
+### Are there reliable numbers about on-call out there?
 
 ---
 
@@ -277,17 +234,16 @@ class: impact full-width
 
 ---
 
-class: middle
-
-## Noisy alerts
-## It's always been like this
-## We do things by hand around here
-## Fighting against the tools
-## This alert is not at the right level
-## Can't remember last time we adapted our alerts
+### Noisy alerts
+### It's always been like this
+### We do things by hand around here
+### Fighting against the tools
+### This alert is not at the right level
+### Can't remember last time we adapted our alerts
 
 ---
 
+<!-- .slide: data-state="transition" -->
 class: transition
 
 ## Mario Fernandez
@@ -303,42 +259,32 @@ class: center impact
 
 ---
 
-class: center middle
+## Detect problems in production before your customers do
 
-# Detect problems in production before your customers do
-
-.bottom-right[https://hceris.com/monitoring-alerts-that-dont-suck/]
+<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
 
 ---
 
-class: center middle
-
-# Avoid false negatives
-## _Trigger when there's a problem_
+## Avoid false negatives
+### _Trigger when there's a problem_
 
 ---
 
-class: center middle
-
-# Avoid false positives
-## _Don't trigger alarms for non-issues_
+## Avoid false positives
+### _Don't trigger alarms for non-issues_
 
 ---
 
-class: center middle
-
-# The Four Golden Signals
+## The Four Golden Signals
 
 ---
 
-class: middle
+### Latency
+### Traffic
+### Errors
+### Saturation
 
-## Latency
-## Traffic
-## Errors
-## Saturation
-
-.bottom-right[https://sre.google/sre-book/monitoring-distributed-systems/]
+<span class="bottom-right">https://sre.google/sre-book/monitoring-distributed-systems/</span>
 
 ---
 
@@ -348,9 +294,7 @@ class: center transition
 
 ---
 
-class: center middle
-
-# Vast majority of alerts trigger automatically
+## Vast majority of alerts trigger automatically
 
 ???
 
@@ -359,9 +303,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# A lot of the noise is *accidental*
+## A lot of the noise is *accidental*
 
 ???
 
@@ -371,9 +313,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Triggering an alert when a pod in Kubernetes restarts
+## Triggering an alert when a pod in Kubernetes restarts
 
 ???
 
@@ -382,10 +322,8 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Warnings are evil
-## Make them failures or ignore them
+## Warnings are evil
+### Make them failures or ignore them
 
 ???
 
@@ -394,21 +332,16 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Delete things you don't need!
+## Delete things you don't need!
 
 ---
 
-class: center middle
-
-# I'm serious, delete them and thank me later
+## I'm serious, delete them and thank me later
 
 ---
 
-class: center middle
-
-# Learning 1️⃣  ➡️ Be ruthless in reducing the noise
+## Learning 1️⃣  ➡️ 
+## Be ruthless in reducing the noise
 
 ---
 
@@ -418,9 +351,7 @@ class: center transition
 
 ---
 
-class: center middle
-
-# When that alert wakes me up I just snooze it and keep sleeping
+## When that alert wakes me up I just snooze it and keep sleeping
 
 ???
 
@@ -430,9 +361,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# We know this doesn't work, but we can't do anything about it
+## We know this doesn't work, but we can't do anything about it
 
 ???
 
@@ -442,10 +371,9 @@ class: center middle
 
 ---
 
-class: right full-width
-background-image: url(images/slowing-monolith.png)
+<!-- .slide: data-background-image="images/slowing-monolith.png" data-background-size="100% auto" -->
 
-# The slowing monolith
+## The slowing monolith
 
 ???
 
@@ -456,9 +384,7 @@ background-image: url(images/slowing-monolith.png)
 
 ---
 
-class: center middle
-
-# Ignoring Post Mortem items 😢
+## Ignoring Post Mortem items 😢
 
 ???
 
@@ -468,9 +394,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Alerting isn't just about technology. It's about organizational alignment
+## Alerting isn't just about technology. It's about organizational alignment
 
 ???
 
@@ -479,9 +403,8 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Learning 2️⃣  ➡️ Commit to action
+## Learning 2️⃣  ➡️ 
+## Commit to action
 
 ---
 
@@ -491,35 +414,27 @@ class: center transition
 
 ---
 
-class: center middle
-
-# Automation is crucial in alerting
+## Automation is crucial in alerting
 
 ---
 
-class: middle
-
 ## Maintenance
 
---
+---
 
 ## Granularity
 
---
+---
 
 ## Spread best practices
 
 ---
 
-class: center middle
-
 ## Any serious monitoring provider allows automation
 
-.bottom-right[https://registry.terraform.io/browse/providers?category=logging-monitoring]
+<span class="bottom-right">https://registry.terraform.io/browse/providers?category=logging-monitoring</span>
 
 ---
-
-class: center middle
 
 ```hcl
 resource "datadog_monitor" "monitor" {
@@ -546,8 +461,6 @@ resource "datadog_monitor" "monitor" {
 
 ---
 
-class: center middle
-
 ```hcl
 module "no_requests_flatline" {
   source = "../../monitor"
@@ -569,9 +482,7 @@ EOT
 
 ---
 
-class: center middle
-
-# From 1 to N to N^(a lot)
+## From 1 to N to N^(a lot)
 
 ???
 
@@ -580,9 +491,8 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Learning 3️⃣  ➡️ Automation is the only way to maintain alerts at scale
+## Learning 3️⃣  ➡️ 
+## Automation is the only way to maintain alerts at scale
 
 ---
 
@@ -598,9 +508,7 @@ class: center transition
 
 ---
 
-class: center middle
-
-# Auto closing
+## Auto closing
 
 ???
 
@@ -608,9 +516,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Auto grouping
+## Auto grouping
 
 ???
 
@@ -618,11 +524,9 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Conditional routing
-## Based on time (business hours vs off hours)
-## Priority (critical vs minor)
+## Conditional routing
+### Based on time (business hours vs off hours)
+### Priority (critical vs minor)
 
 ???
 
@@ -632,9 +536,7 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Do you take it for granted? I've learned not to
+## Do you take it for granted? I've learned not to
 
 ???
 
@@ -644,12 +546,11 @@ class: center middle
 
 ---
 
-class: center middle
-
-.image-grid[
 ![datadog](images/datadog.png)
+
+---
+
 ![pagerduty](images/pagerduty.png)
-]
 
 ???
 
@@ -658,9 +559,8 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Learning 4️⃣  ➡️ Use tools that support you
+## Learning 4️⃣  ➡️ 
+## Use tools that support you
 
 ---
 
@@ -670,20 +570,15 @@ class: center transition
 
 ---
 
-class: center middle
-
-# What's the business impact?
+## What's the business impact?
 
 ---
 
-class: center middle
-
-# Different concerns and levels of abstraction
+## Different concerns and levels of abstraction
 
 ---
 
-class: center middle full-height
-background-image: url(images/monitoring-pyramid.png)
+<!-- .slide: data-background-image="images/monitoring-pyramid.png" data-background-size="auto 100%" -->
 
 ???
 
@@ -694,8 +589,7 @@ background-image: url(images/monitoring-pyramid.png)
 
 ---
 
-class: center middle full-height
-background-image: url(images/dashboard.png)
+<!-- .slide: data-background-image="images/dashboard.png" data-background-size="auto 100%" -->
 
 ???
 
@@ -704,9 +598,8 @@ background-image: url(images/dashboard.png)
 
 ---
 
-class: center middle
-
-# Learning 5️⃣  ➡️ Consider the abstraction level
+## Learning 5️⃣  ➡️ 
+## Consider the abstraction level
 
 ---
 
@@ -716,22 +609,16 @@ class: center transition
 
 ---
 
-class: center middle
-
-# Finding the right threshold feels like a treasure hunt
+## Finding the right threshold feels like a treasure hunt
 
 ---
 
-class: center middle
-
-# Don't try to find the perfect alert 
-## Smaller alerts that cover different angles
+## Don't try to find the perfect alert 
+### Smaller alerts that cover different angles
 
 ---
 
-class: center middle
-
-# Example: Threshold vs Change%
+## Example: Threshold vs Change%
 
 ???
 
@@ -739,18 +626,14 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Tuning builds on top of
-## Reducing noise
-## Automation
-## Using the right tool
+## Tuning builds on top of
+### Reducing noise
+### Automation
+### Using the right tool
 
 ---
 
-class: center middle
-
-# Tuning alerts is treating the symptom
+## Tuning alerts is treating the symptom
 
 ???
 
@@ -760,9 +643,8 @@ class: center middle
 
 ---
 
-class: center middle
-
-# Learning 6️⃣  ➡️ Alerting only reflects the underlying state of a system
+## Learning 6️⃣  ➡️ 
+## Alerting only reflects the underlying state of a system
 
 ---
 
@@ -772,37 +654,29 @@ class: center impact
 
 ---
 
-class: middle
-
-## Noisy alerts
-## It's always been like this
-## We do things by hand around here
-## Fighting against the tools
-## This alert is not at the right level
-## Can't remember last time we adapted our alerts
+### Noisy alerts
+### It's always been like this
+### We do things by hand around here
+### Fighting against the tools
+### This alert is not at the right level
+### Can't remember last time we adapted our alerts
 
 ---
 
-class: middle
-
-## Relentlessly remove noise
-## Don't get used to dysfunction
-## Provision alerts with code
-## Use the right tooling
-## The alerting pyramid
-## Constant tuning
+### Relentlessly remove noise
+### Don't get used to dysfunction
+### Provision alerts with code
+### Use the right tooling
+### The alerting pyramid
+### Constant tuning
 
 ---
 
-class: center middle
-
-# Sensible alerts are a good starting spot
+## Sensible alerts are a good starting spot
 
 ---
 
-class: center middle
-
-# But not an end!
+## But not an end!
 
 ???
 
@@ -813,7 +687,6 @@ class: center middle
 
 ---
 
-class: center middle full-width
-background-image: url(images/sre.png)
+<!-- .slide: data-background-image="images/sre.png" data-background-size="100% auto" -->
 
 ---
