@@ -10,6 +10,8 @@
 @import "../template/settings";
 // ---------------------------------------------
 
+@import "../template/custom";
+
 
 // Include theme-specific fonts
 @import url(./fonts/source-sans-pro/source-sans-pro.css);
@@ -44,12 +46,3 @@ $heading4Size: 1.0em;
 // Theme template ------------------------------
 @import "../template/theme";
 // ---------------------------------------------
-
-// Custom
-
-.bottom-right {
-  position: absolute;
-  right: 32px;
-  bottom: 32px;
-  color: $linkColor;
-}

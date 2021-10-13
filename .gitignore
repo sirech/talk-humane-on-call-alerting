@@ -6,6 +6,7 @@ pdf/
 
 out/
 tmp/**
+dist/theme
 dist/*.map
 
 log/
