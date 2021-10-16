@@ -1,27 +1,3 @@
-# Description (not part of the presentation)
-
-Do you believe in “you build it, you run it”? What if you have on-call rotations, where you are responsible 24x7 for the health of a system? Nothing is quite so infuriating as a collection of poorly structured alerts that trigger randomly.
-
-So, let’s do better! I want to talk about how to improve your monitoring capabilities. There are a few topics I want to touch:
-
-- Reduce the noise
-- Automate as much as possible
-- Build actionable triggers
-- Tune your monitoring constantly
-
-After this talk, you’ll have concrete actions to make your engineers’ life easier when on-call
-
----
-
-# Elevator Pitch (not part of the presentation)
-
-A lot of companies want to be like Amazon today. DevOps, you build it you run it, and other practices are supposed to put you at the top of the technology pyramid.
-
-On-Call is an increasing reality for developers, especially when  a site has strict uptime requirements. And sadly, the experience often sucks. It’s easy to mandate 24x7 support, it’s much harder to set it up in a way that doesn’t make the life of the people in the rotation miserable.
-
-I want to talk about making that experience bearable. I’ve seen developers struggle with the operational burden over three companies already, and I think there are many actionable suggestions to improve it and build something sustainable.
-
----
 class: impact full-width
 
 # Humane On-Call
