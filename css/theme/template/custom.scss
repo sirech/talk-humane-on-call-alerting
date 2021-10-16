@@ -7,28 +7,3 @@
 .right {
   float: right;
 }
-
-// .impact {
-//   background-color: $primary;
-//   vertical-align: middle;
-//   text-align: center;
-//   &, h1, h2, h3 { color: $light; }
-//   h1 {
-//     font-size: $font-size-impact;
-//   }
-// }
-
-.impact-wrapper {
-  margin-left: -2em;
-  margin-right: -2em;
-  padding-left: 2em;
-  padding-right: 2em;
-  background-color: rgba(255, 255, 255, 0.05);
-}
-
-// .transition {
-//   background-image: linear-gradient(to bottom right, $primary, $secondary, $tertiary);
-//   vertical-align: middle;
-//   text-align: center;
-//   &, h1, h2 { color: $text-light; }
-// }

@@ -1,4 +1,4 @@
-class: impact full-width
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Humane On-Call
 ## Alerting doesn't have to be painful
@@ -20,11 +20,9 @@ The message of this talk is:
 
 ---
 
-class: impact full-width
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-.impact-wrapper[
 # On-Call in a Nutshell
-]
 
 ???
 
@@ -66,11 +64,9 @@ class: impact full-width
 
 ---
 
-class: impact full-width
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-.impact-wrapper[
 # Why do this to ourselves?
-]
 
 ---
 
@@ -116,11 +112,9 @@ class: impact full-width
 
 ---
 
-class: impact full-width
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-.impact-wrapper[
 # On-Call can suck
-]
 
 ???
 
@@ -193,11 +187,9 @@ class: impact full-width
 
 ---
 
-class: impact full-width
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-.impact-wrapper[
 # Alerting Dysfunctions
-]
 
 ???
 
@@ -218,8 +210,7 @@ class: impact full-width
 
 ---
 
-<!-- .slide: data-state="transition" -->
-class: transition
+<!-- .slide: data-background-color="var(--r-link-color-dark)"  -->
 
 ## Mario Fernandez
  
@@ -228,7 +219,7 @@ class: transition
 
 ---
 
-class: center impact
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Alerting 101
 
@@ -263,7 +254,7 @@ class: center impact
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Noisy Alerts
 
@@ -321,7 +312,7 @@ class: center transition
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # It's Always Been Like This
 
@@ -388,7 +379,7 @@ class: center transition
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # We Do Things by Hand Around Here
 
@@ -476,7 +467,7 @@ EOT
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Fighting Against the Tools
 
@@ -544,7 +535,7 @@ class: center transition
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # This Alert Is not at the Right Level
 
@@ -583,7 +574,7 @@ class: center transition
 
 ---
 
-class: center transition
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Can't Remember the Last Time we Tuned our Alerts
 
@@ -629,7 +620,7 @@ class: center transition
 
 ---
 
-class: center impact
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Let's summarize the learnings
 
