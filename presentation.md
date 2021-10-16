@@ -157,7 +157,6 @@ class: impact full-width
 
 ---
 
-class: center full-width 
 <!-- .slide: data-background-image="images/interruptions.png" data-background-size="100% auto" -->
 
 ## Constant Interruptions
@@ -182,9 +181,9 @@ class: center full-width
 
 ---
 
-<!-- .slide: data-background-image="images/flaky-alerts.png" data-background-size="100% auto" -->
+<!-- .slide: data-background-image="images/flaky-alerts.png" data-background-size="auto 100%" -->
 
-## Flakyness
+<h2 class="right">Flakyness</h2>
 
 ???
 
@@ -193,10 +192,10 @@ class: center full-width
 
 ---
 
-class: center full-width
-<!-- .slide: data-background-image="images/unhelpful-alarm.png" data-background-size="100% auto" -->
 
 ## Not Actionable
+
+![unhelpful-alarm.png](images/unhelpful-alarm.png)
 
 ???
 
@@ -294,7 +293,7 @@ class: center transition
 
 ---
 
-## Vast majority of alerts trigger automatically
+## The vast majority of alerts trigger automatically
 
 ???
 
@@ -313,7 +312,8 @@ class: center transition
 
 ---
 
-## Triggering an alert when a pod in Kubernetes restarts
+## Example
+### Triggering an alert when a pod in Kubernetes restarts
 
 ???
 
@@ -351,7 +351,11 @@ class: center transition
 
 ---
 
-## When that alert wakes me up I just snooze it and keep sleeping
+## Some actual quotes
+
+---
+
+> When that alert wakes me up I just snooze it and keep sleeping
 
 ???
 
@@ -361,7 +365,7 @@ class: center transition
 
 ---
 
-## We know this doesn't work, but we can't do anything about it
+> We know this doesn't work, but we can't do anything about it
 
 ???
 
@@ -373,7 +377,7 @@ class: center transition
 
 <!-- .slide: data-background-image="images/slowing-monolith.png" data-background-size="100% auto" -->
 
-## The slowing monolith
+<h2 class="bottom-right">The slowing monolith</h2>
 
 ???
 
@@ -618,7 +622,8 @@ class: center transition
 
 ---
 
-## Example: Threshold vs Change%
+## Example
+### Threshold vs Change%
 
 ???
 
