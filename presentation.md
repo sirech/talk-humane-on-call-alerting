@@ -3,13 +3,24 @@
 # Humane On-Call
 ## Alerting doesn't have to be painful
 
+???
+
+- before I get started, how many of you are part of a regular on-call rotation?
+
 ---
 
-## On-Call **is** a reality of operating production software
+<h2 class="fragment fade-out">
+The message of this talk
+</h2>
 
----
+<h2 class="fragment fade-up">
+On-Call is a reality of operating production software
+</h2>
 
-## Let's make it as bearable as possible!
+<h2 class="fragment fade-up">
+Let's make it as bearable as possible!
+</h2>
+
 
 ???
 
@@ -26,15 +37,15 @@ The message of this talk is:
 
 ???
 
-- What is actually on-call?
+- What is actually on-call? Let's spend a bit of time to talk about it first
+
+---
+
+## ✅ Being *available* to handle an incident
 
 ---
 
 ## ❌ Constantly monitor production
-
---
-
-## ✅ Being available to handle an incident
 
 ???
 
@@ -46,17 +57,33 @@ The message of this talk is:
 
 ## 24x7
 
+???
+
+- the key part is that happens outside of business hours (usually)
+
 ---
 
 ## As part of a _rotation_
 
+???
+
+- Nobody should do on-call alone, although this happens sometimes, sadly
+
 ---
 
-## Primary/Secondary developer on call 
-    
-## Weekly rotations 
+![rotation](images/rotation.png)
 
-## Carry a pager 
+---
+
+## Primary/Secondary developer on-call 
+    
+<h2 class="fragment fade-in">
+Weekly rotations
+</h2>
+
+<h2 class="fragment fade-in">
+Carry a pager
+</h2>
 
 ???
 
@@ -96,10 +123,6 @@ The message of this talk is:
 
 ---
 
-## 9 to 5 ain't highly available
-
----
-
 ## You build it, you run it
 
 <span class="bottom-right">https://www.stevesmith.tech/blog/you-build-it-you-run-it/<span>
@@ -119,11 +142,7 @@ The message of this talk is:
 ???
 
 - if you have been part of a rotation you probably know what I mean
-
----
-
-## This talk focuses on the alerting side
-### *Many* other things can go wrong
+- I'm focusing on the alerting side
 
 ---
 
@@ -135,7 +154,7 @@ The message of this talk is:
 
 - what if your alerts are ringing constantly
 - can be extremely disruptive to your day-to-day work
-- even moreso if the person on-call keeps working on the regular topics
+- even more so if the person on-call keeps working on the regular topics
 
 ---
 
@@ -197,16 +216,16 @@ The message of this talk is:
 -- the on-call topic is much more than alerts
 - I'll be focusing the rest of the talk on alerting dysfunctions
 -- What are they
--- Hwo to fix it
+-- How to fix them
 
 ---
 
 ### Noisy alerts
-### It's always been like this
-### We do things by hand around here
-### Fighting against the tools
-### This alert is not at the right level
-### Can't remember last time we adapted our alerts
+### Accepting the status quo
+### Lack of automation
+### Inadequate tools
+### Mixed abstraction levels
+### Infrequent tuning
 
 ---
 
@@ -260,12 +279,11 @@ The message of this talk is:
 
 ---
 
-## The vast majority of alerts trigger automatically
+## When the signal is drowned by the noise
 
-???
+---
 
-- By that I mean that #automated alerts >>> #manually reported alerts
-- If you're not in that situation, not everything I'm saying will apply to you
+## People might stop taking alerts seriously
 
 ---
 
@@ -308,17 +326,26 @@ The message of this talk is:
 ---
 
 ## Learning 1️⃣  ➡️ 
-## Be ruthless in reducing the noise
+### Reduce noise ruthlessly
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# It's Always Been Like This
+# Accepting the Status Quo
 
 ---
 
-## Some actual quotes
+## "It's always been like this"
+
+
+---
+
+## I've found this mindset multiple times
+
+???
+
+- here are some actual quotes
 
 ---
 
@@ -355,7 +382,7 @@ The message of this talk is:
 
 ---
 
-## Ignoring Post Mortem items 😢
+## Ignoring Post-Mortem items 😢
 
 ???
 
@@ -370,18 +397,26 @@ The message of this talk is:
 ???
 
 - To quote a former colleague: "You don't have a technology problem, you have an organizational one"
-- You notice that this part has nothing to do with tools or infrastructure
+- It's got nothing to do with tools
 
 ---
 
 ## Learning 2️⃣  ➡️ 
-## Commit to action
+### Commit to action
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# We Do Things by Hand Around Here
+# Lack of Automation
+
+???
+
+- people get used to do things by hand
+
+---
+
+## Doing things by hand is the easiest way to guarantee non-reproducible results
 
 ---
 
@@ -389,15 +424,21 @@ The message of this talk is:
 
 ---
 
-## Maintenance
+<h2 class="fragment fade-up">
+Reduce maintenance
+</h2>
+
+<h2 class="fragment fade-up">
+Higher granularity
+</h2>
+
+<h2 class="fragment fade-up">
+Spread best practices
+</h2>
 
 ---
 
-## Granularity
-
----
-
-## Spread best practices
+![IaC](images/IaC.jpeg)
 
 ---
 
@@ -453,7 +494,7 @@ EOT
 
 ---
 
-## From 1 to N to N^(a lot)
+## Scale alerts inside a team
 
 ???
 
@@ -462,19 +503,46 @@ EOT
 
 ---
 
+## Scale alerts across teams
+
+???
+
+- this is a problem in our organization right now
+- a team learns from experience, but the learnings are rediscovered by other teams again
+
+---
+
 ## Learning 3️⃣  ➡️ 
-## Automation is the only way to maintain alerts at scale
+### Automation is the only way to maintain alerts at scale
+
+???
+
+- In my experience, nobody has disagreed openly about this 
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Fighting Against the Tools
+# Inadequate Tools
 
 ???
 
 - I've said in point 2 that technology alone is not the solution
-- However, good tooling has a clear place in alerting: Make your life easier
+- Time to contradict myself!
+- Good tooling has a clear place in alerting: Make your life easier
+
+---
+
+## Crappy tools are extra infuriating at 3 in the morning
+
+---
+
+## Intersection of
+### Monitoring
+### Alerting
+
+???
+
 - Two features that I want to mention
 
 ---
@@ -496,8 +564,8 @@ EOT
 ---
 
 ## Conditional routing
-### Based on time (business hours vs off hours)
-### Priority (critical vs minor)
+### Based on time
+### Priority
 
 ???
 
@@ -507,13 +575,18 @@ EOT
 
 ---
 
-## Do you take it for granted? I've learned not to
+## Do you take it for granted?
+### I've learned not to 😩
 
 ???
 
 - Counter example: A tool called ITSM, in a project for a client that I won't mention
 - It had none of these features
 - I wish I had a screenshot of the tool because you would understand instantly what I mean
+
+---
+
+## The market is full of high-quality tools
 
 ---
 
@@ -531,13 +604,13 @@ EOT
 ---
 
 ## Learning 4️⃣  ➡️ 
-## Use tools that support you
+### Use tools that support you
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# This Alert Is not at the Right Level
+# Mixed Abstraction Levels
 
 ---
 
@@ -545,7 +618,7 @@ EOT
 
 ---
 
-## Different concerns and levels of abstraction
+## Monitors check very different things
 
 ---
 
@@ -560,23 +633,30 @@ EOT
 
 ---
 
+## From top to bottom
+
+???
+
+- One thing that I've been doing lately is building dashboards top to bottom. By that I mean start with general metrics, user perspective and go down and drill into individual services
+
+---
+
 <!-- .slide: data-background-image="images/dashboard.png" data-background-size="auto 100%" -->
 
 ???
 
-- One think that I've been doing lately is building dashboards top to bottom. By that I mean start with general metrics, user perspective and go down and drill into individual services
 - If you're answering an alert, the first question has to be: Do I need to do something?
 
 ---
 
 ## Learning 5️⃣  ➡️ 
-## Consider the abstraction level
+### Consider the abstraction level
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Can't Remember the Last Time we Tuned our Alerts
+# Infrequent tuning
 
 ---
 
@@ -615,32 +695,36 @@ EOT
 
 ---
 
-## Learning 6️⃣  ➡️ 
 ## Alerting only reflects the underlying state of a system
+
+---
+
+## Learning 6️⃣  ➡️ 
+### Tune alerts constantly
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Let's summarize the learnings
+# Let's summarize our learnings
 
 ---
 
 ### Noisy alerts
-### It's always been like this
-### We do things by hand around here
-### Fighting against the tools
-### This alert is not at the right level
-### Can't remember last time we adapted our alerts
+### Accepting the status quo
+### Lack of automation
+### Inadequate tools
+### Mixed abstraction levels
+### Infrequent tuning
 
 ---
 
-### Relentlessly remove noise
-### Don't get used to dysfunction
-### Provision alerts with code
-### Use the right tooling
-### The alerting pyramid
-### Constant tuning
+### Reduce noise ruthlessly
+### Commit to action
+### Automation is the only way to maintain alerts at scale
+### Use tools that support you
+### Consider the abstraction level
+### Tune alerts constantly
 
 ---
 
