@@ -43,6 +43,10 @@ The message of this talk is:
 
 ## ✅ Being *available* to handle an incident
 
+???
+
+- it can happen during business hours or outside of them
+
 ---
 
 ## ❌ Constantly monitor production
@@ -51,15 +55,7 @@ The message of this talk is:
 
 - It's not an active thing.
 - It's reactive. You're available in case you're needed
--- NOT for any incident though
-
----
-
-## 24x7
-
-???
-
-- the key part is that happens outside of business hours (usually)
+- NOT for any incident though
 
 ---
 
@@ -68,10 +64,15 @@ The message of this talk is:
 ???
 
 - Nobody should do on-call alone, although this happens sometimes, sadly
+- Hero mode is strong in the industry
 
 ---
 
 ![rotation](images/rotation.png)
+
+???
+
+- screenshot comes from PD. It's the tool we use at work, so I'll use it for my examples
 
 ---
 
@@ -88,6 +89,7 @@ Carry a pager
 ???
 
 - how could a rotation look like? Let's think about it
+- depending on the size of the organization. Usually, each team will have one person on-call
 
 ---
 
@@ -95,9 +97,13 @@ Carry a pager
 
 # Why do this to ourselves?
 
+???
+
+- An immediate question is: Why should we do this to ourselves?
+
 ---
 
-## People expect constant availability
+## Users expect constant availability
 
 ---
 
@@ -129,9 +135,10 @@ Carry a pager
 
 ???
 
-- this model is born to provide faster support for individual services
-- less handovers
+- A second answer for why do this to ourselves?
 - developers have "skin in the game"
+- Build more resilient systems
+- Reduce handovers
 
 ---
 
@@ -181,28 +188,15 @@ Carry a pager
 
 ---
 
-
-## Not Actionable
-
-![unhelpful-alarm.png](images/unhelpful-alarm.png)
-
-???
-
-- Alerts that don't have a clear action are specially annoying
-- TODO: not sure if this slide fits here
-
----
-
 <!-- .slide: data-background-image="images/explosion.jpeg" data-background-size="100% auto" -- >
 
 ---
 
 ## We can do better than this
 
----
+???
 
-## Side Note
-### Are there reliable numbers about on-call out there?
+- As a side note, reliable numbers are surprisingly hard to come by
 
 ---
 
@@ -214,9 +208,8 @@ Carry a pager
 
 - as I said I want to talk about alerting
 -- the on-call topic is much more than alerts
-- I'll be focusing the rest of the talk on alerting dysfunctions
--- What are they
--- How to fix them
+- I've spent the past two years in full-time on-call, and have operated applications as a developer before that
+- This are some of the dysfunctions I've found
 
 ---
 
@@ -225,7 +218,7 @@ Carry a pager
 ### Lack of automation
 ### Inadequate tools
 ### Mixed abstraction levels
-### Infrequent tuning
+### Mismatched tuning
 
 ---
 
@@ -248,15 +241,27 @@ Carry a pager
 
 <span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
 
----
+???
 
-## Avoid false negatives
-### _Trigger when there's a problem_
+- combination of an automated monitor, and a notification system that alerts the responsible developer
 
 ---
 
 ## Avoid false positives
 ### _Don't trigger alarms for non-issues_
+
+???
+
+- Type I error
+
+---
+
+## Avoid false negatives
+### _Trigger when there's a problem_
+
+???
+
+- Type II error
 
 ---
 
@@ -283,7 +288,18 @@ Carry a pager
 
 ---
 
-## People might stop taking alerts seriously
+todo -> pic either dashboard with too much info or cacophony of alerts
+
+---
+
+## Alert fatigue leads to ignoring alerts
+
+<span class="bottom-right">https://www.atlassian.com/incident-management/on-call/alert-fatigue</span>
+
+???
+
+- this is completely expected
+- you can't constantly be in tension
 
 ---
 
@@ -318,15 +334,17 @@ Carry a pager
 ---
 
 ## Delete things you don't need!
-
----
-
-## I'm serious, delete them and thank me later
+### Like, seriously
 
 ---
 
 ## Learning 1️⃣  ➡️ 
 ### Reduce noise ruthlessly
+
+???
+
+- I feel like I'm pointing the obvious
+- And yet, this is a pattern that keeps repeating wherever I go
 
 ---
 
@@ -337,11 +355,6 @@ Carry a pager
 ---
 
 ## "It's always been like this"
-
-
----
-
-## I've found this mindset multiple times
 
 ???
 
@@ -363,9 +376,8 @@ Carry a pager
 
 ???
 
-- You know how I mentioned "you build it you run it" before?
-- That only works if you actual agency to change
-- Are you a proxy to another team? That's a bad position to be in
+- The opposite of you build it you run it
+- You get the incidents but can't make the required changes
 
 ---
 
@@ -376,23 +388,13 @@ Carry a pager
 ???
 
 - this a personal favorite
--- a service of us depends on an old monolith. For unknown reasons, it degrades over time until the performance is unusable
--- infra folks need to restart the VMs every now and then
-- for organizational reasons, we don't have the rights to do that, and we can't even automate the process of restarting to mitigate the pain at least
+- a service we own depends on a monolith that's not actively developed
+- performance degrades over time until it reaches a breaking point (spikes in the chart)
+- "the solution" is to restart the VMs, but it just pushes the problem to the future
 
 ---
 
-## Ignoring Post-Mortem items 😢
-
-???
-
-- I'm assuming that you do post mortems after incidents
--- If not, well that's the action point
-- Even if you do them, you have to commit to prioritize them
-
----
-
-## Alerting isn't just about technology. It's about organizational alignment
+## This isn't a technology problem, but an organizational one
 
 ???
 
@@ -403,6 +405,11 @@ Carry a pager
 
 ## Learning 2️⃣  ➡️ 
 ### Commit to action
+
+???
+
+- This starts at the post-mortem level
+- you **have** to commit to carry the actions decided there, and do it swiftly
 
 ---
 
@@ -416,11 +423,15 @@ Carry a pager
 
 ---
 
-## Doing things by hand is the easiest way to guarantee non-reproducible results
+## Manual work means non-reproducible results
 
 ---
 
 ## Automation is crucial in alerting
+
+???
+
+- Why?
 
 ---
 
@@ -440,9 +451,18 @@ Spread best practices
 
 ![IaC](images/IaC.jpeg)
 
+???
+
+- monitoring/alerting is infrastructure
+
 ---
 
 ## Any serious monitoring provider allows automation
+
+---
+
+
+![terraform](images/terraform.svg)
 
 <span class="bottom-right">https://registry.terraform.io/browse/providers?category=logging-monitoring</span>
 
@@ -491,6 +511,10 @@ EOT
   monitor_thresholds = { critical = local.threshold }
 }
 ```
+
+---
+
+todo -> example PD?
 
 ---
 
@@ -580,7 +604,7 @@ EOT
 
 ???
 
-- Counter example: A tool called ITSM, in a project for a client that I won't mention
+- Counter example: A german client used an internal tool for incident management. It came straight out of the 90s
 - It had none of these features
 - I wish I had a screenshot of the tool because you would understand instantly what I mean
 
@@ -614,11 +638,24 @@ EOT
 
 ---
 
-## What's the business impact?
+## What are you measuring?
 
 ---
 
-## Monitors check very different things
+todo -> synthetic
+
+???
+
+- If you have a synthetic flow, that answers questions about high level metrics
+
+---
+
+todo -> cpu alert
+
+???
+
+- An alert like cpu is high doesn't say anything about business impact
+- It goes in both directions
 
 ---
 
@@ -633,7 +670,7 @@ EOT
 
 ---
 
-## From top to bottom
+## Reflect the differences in abstraction level
 
 ???
 
@@ -656,25 +693,11 @@ EOT
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Infrequent tuning
+# Mismatched Tuning
 
 ---
 
-## Finding the right threshold feels like a treasure hunt
-
----
-
-## Don't try to find the perfect alert 
-### Smaller alerts that cover different angles
-
----
-
-## Example
-### Threshold vs Change%
-
-???
-
-- A very concrete example: thresholds vs change%
+## Tuning alerts is tricky
 
 ---
 
@@ -682,6 +705,36 @@ EOT
 ### Reducing noise
 ### Automation
 ### Using the right tool
+
+---
+
+## Balance between overly sensitive and missing incidents
+
+---
+
+## Avoid absolute thresholds
+
+---
+
+## Beware of low traffic services
+
+???
+
+- solutions: aggregate services, create synthetic traffic
+
+---
+
+## Split alerts in smaller pieces
+
+???
+
+- flatline
+- change%
+
+
+---
+
+## However!
 
 ---
 
@@ -715,7 +768,7 @@ EOT
 ### Lack of automation
 ### Inadequate tools
 ### Mixed abstraction levels
-### Infrequent tuning
+### Mismatched tuning
 
 ---
 
