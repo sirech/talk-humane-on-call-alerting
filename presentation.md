@@ -9,12 +9,12 @@
 
 ---
 
-<h2 class="fragment fade-out">
-The message of this talk
+<h2 class="fragment fade-up">
+On-Call is a reality of operating production software
 </h2>
 
 <h2 class="fragment fade-up">
-On-Call is a reality of operating production software
+Alerting is a classical friction point
 </h2>
 
 <h2 class="fragment fade-up">
@@ -61,35 +61,12 @@ The message of this talk is:
 
 ## As part of a _rotation_
 
+<img src="images/rotation.png" />
+
 ???
 
 - Nobody should do on-call alone, although this happens sometimes, sadly
-- Hero mode is strong in the industry
-
----
-
-![rotation](images/rotation.png)
-
-???
-
-- screenshot comes from PD. It's the tool we use at work, so I'll use it for my examples
-
----
-
-## Primary/Secondary developer on-call 
-    
-<h2 class="fragment fade-in">
-Weekly rotations
-</h2>
-
-<h2 class="fragment fade-in">
-Carry a pager
-</h2>
-
-???
-
-- how could a rotation look like? Let's think about it
-- depending on the size of the organization. Usually, each team will have one person on-call
+- weekly rotations
 
 ---
 
@@ -119,13 +96,12 @@ Carry a pager
 ### 21.92 minutes / month
 ### 4.38 hours / year
 
-
 <span class=bottom-right>https://en.wikipedia.org/wiki/High_availability</span>
 
 ???
 
 - 3 and half nines is what Google SQL offers
-- 20 minutes per month isn't a lot! If you rollback manually and the pipeline isn't fast, it could take more than that
+- 20 minutes per month isn't a lot! A slow rollback process for a bad deploy is enough to exhaust the budget
 
 ---
 
@@ -135,7 +111,7 @@ Carry a pager
 
 ???
 
-- A second answer for why do this to ourselves?
+- A second answer for "why do this to ourselves?"
 - developers have "skin in the game"
 - Build more resilient systems
 - Reduce handovers
@@ -266,8 +242,6 @@ Carry a pager
 ---
 
 ## The Four Golden Signals
-
----
 
 ### Latency
 ### Traffic
@@ -642,7 +616,7 @@ todo -> example PD?
 
 ---
 
-todo -> synthetic
+<!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
 
 ???
 
@@ -650,7 +624,7 @@ todo -> synthetic
 
 ---
 
-todo -> cpu alert
+<!-- .slide: data-background-image="images/cpu-alert.png" data-background-size="auto 100%" -->
 
 ???
 
