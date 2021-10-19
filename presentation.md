@@ -126,7 +126,7 @@ The message of this talk is:
 
 - on-call is a big topic
 - I'm going to focus on alerting
-- For that, let's do a short introduction to the topic
+- Before that, let's do a short introduction to the topic
 
 ---
 
@@ -137,6 +137,12 @@ The message of this talk is:
 ---
 
 ## Monitoring ➕ Notification
+
+???
+
+- alerting is a combination of monitoring and notification
+- observe systems (monitoring)
+- detect anomalies based on certain criteria, and create a meaningful event to notify the appropriate operator (notification)
 
 ---
 
@@ -247,7 +253,6 @@ The message of this talk is:
 ### Staff Engineer
 ### Wayfair
 
-
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
@@ -258,13 +263,13 @@ The message of this talk is:
 
 ## When the signal is drowned by the noise
 
+???
+
+- not easy to show in a picture, but imagine a slack channel with an endless list of alerts triggering left and right
+
 ---
 
-todo -> pic either dashboard with too much info or cacophony of alerts
-
----
-
-## Alert fatigue leads to ignoring alerts
+## Alert fatigue leads to ignored alerts
 
 <span class="bottom-right">https://www.atlassian.com/incident-management/on-call/alert-fatigue</span>
 
@@ -285,7 +290,9 @@ todo -> pic either dashboard with too much info or cacophony of alerts
 
 ---
 
-todo -> pic of kubernetes alert that is just a normal thing
+<h2 class="right">Unclear action</h2>
+
+<!-- .slide: data-background-image="images/low-pods-alert.png" data-background-size="auto 100%" -->
 
 ???
 
@@ -295,7 +302,9 @@ todo -> pic of kubernetes alert that is just a normal thing
 
 ---
 
-todo -> alert with warning of some disk limit being reached
+<h2 class="right">Unclear urgency</h2>
+
+<!-- .slide: data-background-image="images/unclear-warning.png" data-background-size="100% auto" -->
 
 ???
 
@@ -472,7 +481,26 @@ resource "datadog_monitor" "monitor" {
 
 ---
 
-todo -> example PD?
+```hcl
+resource "pagerduty_team" "team" {
+  name = "Service Team"
+}
+
+resource "pagerduty_schedule" "schedule" {
+  name      = "Weekly Engineering Rotation"
+  time_zone = "Europe/Berlin"
+
+  layer {
+    name                         = "Night Shift"
+    start                        = "2015-11-06T20:00:00-05:00"
+    rotation_virtual_start       = "2015-11-06T20:00:00-05:00"
+    rotation_turn_length_seconds = 86400
+    users                        = [pagerduty_user.team.id]
+  }
+
+  teams = [pagerduty_team.example.id]
+}
+```
 
 ---
 
@@ -548,11 +576,7 @@ EOT
 
 ---
 
-## Intersection of
-### Monitoring
-### Alerting
-
-todo -> replace with picture?
+![intersection](images/intersection.png)
 
 ???
 
@@ -707,13 +731,13 @@ todo -> replace with picture?
 
 ## Avoid absolute thresholds
 
-todo -> alert with arbitrary threshold
+![absolute-threshold](images/absolute-threshold.png)
 
 ---
 
 ## Beware of low traffic services
 
-todo -> dashboard for low traffic service
+![low-traffic](images/low-traffic.png)
 
 ???
 
@@ -723,7 +747,7 @@ todo -> dashboard for low traffic service
 
 ## Split alerts in smaller pieces
 
-todo -> show flatline vs change%
+![split-alerts](images/split-alerts.png)
 
 ???
 
