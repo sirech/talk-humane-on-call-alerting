@@ -120,12 +120,62 @@ The message of this talk is:
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# On-Call can suck
+# Alerting 101
+
+???
+
+- on-call is a big topic
+- I'm going to focus on alerting
+- For that, let's do a short introduction to the topic
+
+---
+
+## Detect problems in production before your customers do
+
+<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
+
+---
+
+## Monitoring ➕ Notification
+
+---
+
+## Avoid false positives
+### _Don't trigger alarms for non-issues_
+
+???
+
+- Type I error
+
+---
+
+## Avoid false negatives
+### _Trigger when there's a problem_
+
+???
+
+- Type II error
+
+---
+
+## The Four Golden Signals
+
+### Latency
+### Traffic
+### Errors
+### Saturation
+
+<span class="bottom-right">https://sre.google/sre-book/monitoring-distributed-systems/</span>
+
+---
+
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
+
+# ⚠️ 📟 🔥
 
 ???
 
 - if you have been part of a rotation you probably know what I mean
-- I'm focusing on the alerting side
 
 ---
 
@@ -168,14 +218,6 @@ The message of this talk is:
 
 ---
 
-## We can do better than this
-
-???
-
-- As a side note, reliable numbers are surprisingly hard to come by
-
----
-
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Alerting Dysfunctions
@@ -205,50 +247,6 @@ The message of this talk is:
 ### Staff Engineer
 ### Wayfair
 
----
-
-<!-- .slide: data-background-color="var(--r-main-color)"  -->
-
-# Alerting 101
-
----
-
-## Detect problems in production before your customers do
-
-<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
-
-???
-
-- combination of an automated monitor, and a notification system that alerts the responsible developer
-
----
-
-## Avoid false positives
-### _Don't trigger alarms for non-issues_
-
-???
-
-- Type I error
-
----
-
-## Avoid false negatives
-### _Trigger when there's a problem_
-
-???
-
-- Type II error
-
----
-
-## The Four Golden Signals
-
-### Latency
-### Traffic
-### Errors
-### Saturation
-
-<span class="bottom-right">https://sre.google/sre-book/monitoring-distributed-systems/</span>
 
 ---
 
@@ -287,13 +285,21 @@ todo -> pic either dashboard with too much info or cacophony of alerts
 
 ---
 
-## Example
-### Triggering an alert when a pod in Kubernetes restarts
+todo -> pic of kubernetes alert that is just a normal thing
 
 ???
 
+- alerts where action isn't clear.
 - Kubernetes restarts pods all the time without intervention. It's kind of the point of using it
-- Maybe a more accurate statement is that trying to monitor how k8s works is a recipe for frustration
+- If it's expected, why monitor it?
+
+---
+
+todo -> alert with warning of some disk limit being reached
+
+???
+
+- alerts where urgency isn't clear.
 
 ---
 
@@ -368,11 +374,11 @@ todo -> pic either dashboard with too much info or cacophony of alerts
 
 ---
 
-## This isn't a technology problem, but an organizational one
+## Don't fix organizational problems with technology
 
 ???
 
-- To quote a former colleague: "You don't have a technology problem, you have an organizational one"
+- Inspired by what a former colleague used to say all the time
 - It's got nothing to do with tools
 
 ---
@@ -435,7 +441,6 @@ Spread best practices
 
 ---
 
-
 ![terraform](images/terraform.svg)
 
 <span class="bottom-right">https://registry.terraform.io/browse/providers?category=logging-monitoring</span>
@@ -467,6 +472,10 @@ resource "datadog_monitor" "monitor" {
 
 ---
 
+todo -> example PD?
+
+---
+
 ```hcl
 module "no_requests_flatline" {
   source = "../../monitor"
@@ -486,9 +495,9 @@ EOT
 }
 ```
 
----
+???
 
-todo -> example PD?
+- based on this building blocks, you can create reusable modules
 
 ---
 
@@ -531,13 +540,19 @@ todo -> example PD?
 
 ---
 
-## Crappy tools are extra infuriating at 3 in the morning
+> Crappy tools are extra infuriating at 3 in the morning
+
+???
+
+- I'm going to quote myself for this one
 
 ---
 
 ## Intersection of
 ### Monitoring
 ### Alerting
+
+todo -> replace with picture?
 
 ???
 
@@ -614,6 +629,10 @@ todo -> example PD?
 
 ## What are you measuring?
 
+???
+
+- typical dashboard that measures very high level things (i.e: revenue), and very low level things (i.e: disk space)
+
 ---
 
 <!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
@@ -688,9 +707,13 @@ todo -> example PD?
 
 ## Avoid absolute thresholds
 
+todo -> alert with arbitrary threshold
+
 ---
 
 ## Beware of low traffic services
+
+todo -> dashboard for low traffic service
 
 ???
 
@@ -700,19 +723,17 @@ todo -> example PD?
 
 ## Split alerts in smaller pieces
 
+todo -> show flatline vs change%
+
 ???
 
 - flatline
 - change%
 
-
 ---
 
 ## However!
-
----
-
-## Tuning alerts is treating the symptom
+### Tuning alerts is treating the symptom
 
 ???
 
@@ -723,6 +744,10 @@ todo -> example PD?
 ---
 
 ## Alerting only reflects the underlying state of a system
+
+???
+
+- I've found close to impossible to build reliable alerting systems on top of completely unstable systems
 
 ---
 
@@ -752,6 +777,10 @@ todo -> example PD?
 ### Use tools that support you
 ### Consider the abstraction level
 ### Tune alerts constantly
+
+???
+
+- is there an order? I'd say depends on your situation
 
 ---
 
