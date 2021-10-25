@@ -132,8 +132,6 @@ The message of this talk is:
 
 ## Detect problems in production before your customers do
 
-<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
-
 ---
 
 ## Monitoring ➕ Notification
@@ -241,8 +239,8 @@ The message of this talk is:
 ### Accepting the status quo
 ### Lack of automation
 ### Inadequate tools
-### Mixed abstraction levels
 ### Mismatched tuning
+### Mixed abstraction levels
 
 ---
 
@@ -383,15 +381,6 @@ The message of this talk is:
 
 ---
 
-## Don't fix organizational problems with technology
-
-???
-
-- Inspired by what a former colleague used to say all the time
-- It's got nothing to do with tools
-
----
-
 ## Learning 2️⃣  ➡️ 
 ### Commit to action
 
@@ -426,10 +415,6 @@ The message of this talk is:
 
 <h2 class="fragment fade-up">
 Reduce maintenance
-</h2>
-
-<h2 class="fragment fade-up">
-Higher granularity
 </h2>
 
 <h2 class="fragment fade-up">
@@ -647,6 +632,66 @@ EOT
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
+# Mismatched Tuning
+
+???
+
+- tuning alerts is tricky
+
+---
+
+## Type I vs Type II 
+### Errors
+
+---
+
+## Use ratios as metrics
+
+![absolute-threshold](images/absolute-threshold.png)
+
+???
+
+- absolute number of errors doesn't really say anything
+
+---
+
+## Get enough data
+
+![low-traffic](images/low-traffic.png)
+
+???
+
+- low traffic services are noisy
+- solutions: aggregate services, create synthetic traffic
+
+---
+
+## Tie thresholds to business metrics
+### (SLOs)
+
+TODO: better pic?
+![split-alerts](images/split-alerts.png)
+
+---
+
+## Reliable alerts are hard!
+
+<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
+
+???
+
+- the SRE workbook has some good stuff to create reliable SLO based alerts
+
+---
+
+## Learning 5️⃣  ➡️ 
+### Tune alerts constantly
+
+
+---
+
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
+
 # Mixed Abstraction Levels
 
 ---
@@ -703,80 +748,8 @@ EOT
 
 ---
 
-## Learning 5️⃣  ➡️ 
-### Consider the abstraction level
-
----
-
-<!-- .slide: data-background-color="var(--r-main-color)"  -->
-
-# Mismatched Tuning
-
----
-
-## Tuning alerts is tricky
-
----
-
-## Tuning builds on top of
-### Reducing noise
-### Automation
-### Using the right tool
-
----
-
-## Balance between overly sensitive and missing incidents
-
----
-
-## Avoid absolute thresholds
-
-![absolute-threshold](images/absolute-threshold.png)
-
----
-
-## Beware of low traffic services
-
-![low-traffic](images/low-traffic.png)
-
-???
-
-- solutions: aggregate services, create synthetic traffic
-
----
-
-## Split alerts in smaller pieces
-
-![split-alerts](images/split-alerts.png)
-
-???
-
-- flatline
-- change%
-
----
-
-## However!
-### Tuning alerts is treating the symptom
-
-???
-
-- I've been changing my mind about tuning
-- There's only so much you can do
--- If the system is unstable, good alerting will reflect that
-
----
-
-## Alerting only reflects the underlying state of a system
-
-???
-
-- I've found close to impossible to build reliable alerting systems on top of completely unstable systems
-
----
-
 ## Learning 6️⃣  ➡️ 
-### Tune alerts constantly
+### Consider the abstraction level
 
 ---
 
@@ -790,8 +763,8 @@ EOT
 ### Accepting the status quo
 ### Lack of automation
 ### Inadequate tools
-### Mixed abstraction levels
 ### Mismatched tuning
+### Mixed abstraction levels
 
 ---
 
@@ -799,8 +772,8 @@ EOT
 ### Commit to action
 ### Automation is the only way to maintain alerts at scale
 ### Use tools that support you
-### Consider the abstraction level
 ### Tune alerts constantly
+### Consider the abstraction level
 
 ???
 
@@ -812,7 +785,8 @@ EOT
 
 ---
 
-## But not an end!
+## But!
+### Alerting only reflects the underlying state of a system
 
 ???
 
