@@ -10,24 +10,22 @@
 ---
 
 <h2 class="fragment fade-up">
-On-Call is a reality of operating production software
+Bad alerting adds friction to operating production software
 </h2>
 
 <h2 class="fragment fade-up">
-Alerting is a classical friction point
+Common dysfunctions
 </h2>
 
 <h2 class="fragment fade-up">
-Let's make it as bearable as possible!
+Improve the experience!
 </h2>
-
 
 ???
 
-The message of this talk is:
-
-- We must make it as painless as possible
-- We can improve things
+- This talk is about alerting when operating production software. Part of the topic of being on-call
+- I want to talk about things that make the experience difficult
+- Actions to make it better
 
 ---
 
@@ -42,20 +40,13 @@ The message of this talk is:
 ---
 
 ## ✅ Being *available* to handle an incident
-
-???
-
-- it can happen during business hours or outside of them
-
----
-
 ## ❌ Constantly monitor production
 
 ???
 
+- it can happen during business hours or outside of them
 - It's not an active thing.
 - It's reactive. You're available in case you're needed
-- NOT for any incident though
 
 ---
 
@@ -80,7 +71,8 @@ The message of this talk is:
 
 ---
 
-## Users expect constant availability
+## Reason 1
+### Users expect constant availability
 
 ---
 
@@ -92,22 +84,10 @@ The message of this talk is:
 
 ---
 
-## High Availability (99,95%)
-### 21.92 minutes / month
-### 4.38 hours / year
+## Reason 2
+### You build it, you run it
 
-<span class=bottom-right>https://en.wikipedia.org/wiki/High_availability</span>
-
-???
-
-- 3 and half nines is what Google SQL offers
-- 20 minutes per month isn't a lot! A slow rollback process for a bad deploy is enough to exhaust the budget
-
----
-
-## You build it, you run it
-
-<span class="bottom-right">https://www.stevesmith.tech/blog/you-build-it-you-run-it/<span>
+<span class="bottom-right">www.stevesmith.tech/blog/you-build-it-you-run-it/<span>
 
 ???
 
@@ -191,7 +171,7 @@ The message of this talk is:
 
 <!-- .slide: data-background-image="images/flaky-alerts.png" data-background-size="auto 100%" -->
 
-<h2 class="right">Flakyness</h2>
+<h2 class="right">Flakiness</h2>
 
 ???
 
@@ -226,15 +206,6 @@ The message of this talk is:
 
 ---
 
-<!-- .slide: data-background-color="var(--r-link-color-dark)"  -->
-
-## Mario Fernandez
- 
-### Staff Engineer
-### Wayfair
-
----
-
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Noisy Alerts
@@ -245,13 +216,13 @@ The message of this talk is:
 
 ???
 
-- not easy to show in a picture, but imagine a slack channel with an endless list of alerts triggering left and right
+- picture a slack channel with a neverending scrolling list of alerts
 
 ---
 
 ## Alert fatigue leads to ignored alerts
 
-<span class="bottom-right">https://www.atlassian.com/incident-management/on-call/alert-fatigue</span>
+<span class="bottom-right">www.atlassian.com/incident-management/on-call/alert-fatigue</span>
 
 ???
 
@@ -282,7 +253,7 @@ The message of this talk is:
 
 ---
 
-<h2 class="right">Unclear urgency</h2>
+<h2 class="right">What should I do?</h2>
 
 <!-- .slide: data-background-image="images/unclear-warning.png" data-background-size="100% auto" -->
 
@@ -787,5 +758,14 @@ TODO: better pic?
 ---
 
 <!-- .slide: data-background-image="images/sre.png" data-background-size="100% auto" -->
+
+---
+
+<!-- .slide: data-background-color="var(--r-link-color-dark)"  -->
+
+## Mario Fernandez
+ 
+### Staff Engineer
+### Wayfair
 
 ---
