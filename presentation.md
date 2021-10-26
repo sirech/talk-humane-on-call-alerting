@@ -144,24 +144,6 @@ The message of this talk is:
 
 ---
 
-## Avoid false positives
-### _Don't trigger alarms for non-issues_
-
-???
-
-- Type I error
-
----
-
-## Avoid false negatives
-### _Trigger when there's a problem_
-
-???
-
-- Type II error
-
----
-
 ## The Four Golden Signals
 
 ### Latency
@@ -644,8 +626,9 @@ EOT
 
 ---
 
-## Type I vs Type II 
-### Errors
+## Minimize
+### false _positives_
+### false _negatives_
 
 ---
 
