@@ -324,14 +324,12 @@ Improve the experience!
 
 <!-- .slide: data-background-image="images/slowing-monolith.png" data-background-size="100% auto" -->
 
-<h2 class="bottom-right">The slowing monolith</h2>
+<h2 class="bottom-right">Long-lived issues</h2>
 
 ???
 
-- this a personal favorite
-- a service we own depends on a monolith that's not actively developed
 - performance degrades over time until it reaches a breaking point (spikes in the chart)
-- "the solution" is to restart the VMs, but it just pushes the problem to the future
+- notice the timeline. We're talking about months!
 
 ---
 
@@ -378,7 +376,7 @@ Spread best practices
 
 ---
 
-![IaC](images/IaC.jpeg)
+<!-- .slide: data-background-image="images/IaC.png" data-background-size="auto 100%" -->
 
 ???
 
@@ -392,7 +390,7 @@ Spread best practices
 
 ![terraform](images/terraform.svg)
 
-<span class="bottom-right">https://registry.terraform.io/browse/providers?category=logging-monitoring</span>
+<span class="bottom-right">https://registry.terraform.io/browse/providers</span>
 
 ---
 
@@ -489,7 +487,7 @@ EOT
 
 ## Learning 3️⃣
 ## ⬇️
-### Automation is the only way to maintain alerts at scale
+### Leverage automation at scale
 
 ???
 
@@ -603,7 +601,7 @@ EOT
 
 ---
 
-## Use ratios as metrics
+## Use ratios for your metrics
 
 ![absolute-threshold](images/absolute-threshold.png)
 
@@ -634,11 +632,12 @@ TODO: better pic?
 
 ## Reliable alerts are hard!
 
-<span class="bottom-right">https://hceris.com/monitoring-alerts-that-dont-suck/</span>
+<span class="bottom-right"><a href="https://hceris.com/monitoring-alerts-that-dont-suck/">hceris.com/monitoring-alerts-that-dont-suck/</a></span>
 
 ???
 
-- the SRE workbook has some good stuff to create reliable SLO based alerts
+- Keep in mind that there's a limit of what you can accomplish by tuning alerts
+- In the end, alerts only reflect the underlying state of a system
 
 ---
 
@@ -715,7 +714,7 @@ TODO: better pic?
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Let's summarize our learnings
+# Dysfunctions and Learnings Side by Side
 
 ---
 
@@ -730,7 +729,7 @@ TODO: better pic?
 
 ### Reduce noise ruthlessly
 ### Commit to action
-### Automation is the only way to maintain alerts at scale
+### Leverage automation at scale
 ### Use tools that support you
 ### Tune alerts constantly
 ### Consider the abstraction level
@@ -741,12 +740,7 @@ TODO: better pic?
 
 ---
 
-## Sensible alerts are a good starting spot
-
----
-
-## But!
-### Alerting only reflects the underlying state of a system
+<!-- .slide: data-background-image="images/sre.png" data-background-size="100% auto" -->
 
 ???
 
@@ -754,10 +748,6 @@ TODO: better pic?
 -- How to handle them?
 -- How to improve?
 - The topic is big enough to cover book(s)
-
----
-
-<!-- .slide: data-background-image="images/sre.png" data-background-size="100% auto" -->
 
 ---
 
