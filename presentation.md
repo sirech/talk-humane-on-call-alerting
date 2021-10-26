@@ -325,7 +325,8 @@ The message of this talk is:
 
 ---
 
-## Learning 1️⃣  ➡️ 
+## Learning 1️⃣
+## ⬇️
 ### Reduce noise ruthlessly
 
 ???
@@ -381,7 +382,8 @@ The message of this talk is:
 
 ---
 
-## Learning 2️⃣  ➡️ 
+## Learning 2️⃣
+## ⬇️
 ### Commit to action
 
 ???
@@ -532,7 +534,8 @@ EOT
 
 ---
 
-## Learning 3️⃣  ➡️ 
+## Learning 3️⃣
+## ⬇️
 ### Automation is the only way to maintain alerts at scale
 
 ???
@@ -625,7 +628,8 @@ EOT
 
 ---
 
-## Learning 4️⃣  ➡️ 
+## Learning 4️⃣
+## ⬇️
 ### Use tools that support you
 
 ---
@@ -684,7 +688,8 @@ TODO: better pic?
 
 ---
 
-## Learning 5️⃣  ➡️ 
+## Learning 5️⃣
+## ⬇️
 ### Tune alerts constantly
 
 
@@ -748,7 +753,8 @@ TODO: better pic?
 
 ---
 
-## Learning 6️⃣  ➡️ 
+## Learning 6️⃣
+## ⬇️
 ### Consider the abstraction level
 
 ---
