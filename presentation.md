@@ -83,7 +83,7 @@ We can do better!
 ## Reason 2
 ### You build it, you run it
 
-<span class="bottom-right">www.stevesmith.tech/blog/you-build-it-you-run-it/<span>
+<span class="bottom-right"><a href="www.stevesmith.tech/blog/you-build-it-you-run-it/">stevesmith.tech/blog/you-build-it-you-run-it/</a></span>
 
 ???
 
@@ -127,7 +127,7 @@ We can do better!
 ### Errors
 ### Saturation
 
-<span class="bottom-right">https://sre.google/sre-book/monitoring-distributed-systems/</span>
+<span class="bottom-right"><a href="https://sre.google/sre-book/monitoring-distributed-systems/">sre.google/sre-book/monitoring-distributed-systems/</a></span>
 
 ---
 
@@ -218,7 +218,7 @@ We can do better!
 
 ## Alert fatigue leads to ignored alerts
 
-<span class="bottom-right">www.atlassian.com/incident-management/on-call/alert-fatigue</span>
+<span class="bottom-right"><a href="www.atlassian.com/incident-management/on-call/alert-fatigue">atlassian.com/incident-management/on-call/alert-fatigue</a></span>
 
 ???
 
@@ -237,7 +237,7 @@ We can do better!
 
 ---
 
-<h2 class="right">Unclear action</h2>
+<h2 class="right">Isn't this Kubernetes job?</h2>
 
 <!-- .slide: data-background-image="images/low-pods-alert.png" data-background-size="auto 100%" -->
 
@@ -331,7 +331,7 @@ We can do better!
 
 ## Learning 2️⃣
 ## ⬇️
-### Commit to action
+### Act decisively
 
 ???
 
@@ -631,7 +631,7 @@ TODO: better pic?
 
 ## Learning 5️⃣
 ## ⬇️
-### Tune alerts constantly
+### Tune alerts often
 
 
 ---
@@ -718,7 +718,7 @@ TODO: better pic?
 
 ## Learning 6️⃣
 ## ⬇️
-### Use the right abstraction level
+### Use the right alert
 
 ---
 
@@ -738,11 +738,11 @@ TODO: better pic?
 ---
 
 ### Reduce noise ruthlessly
-### Commit to action
+### Act decisively
 ### Leverage automation at scale
 ### Adopt tools that support you
-### Tune alerts constantly
-### Use the right abstraction level
+### Tune alerts often
+### Use the right alert
 
 ???
 
