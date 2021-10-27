@@ -438,28 +438,88 @@ resource "pagerduty_schedule" "schedule" {
 
 ---
 
-```hcl
-module "no_requests_flatline" {
-  source = "../../monitor"
+## What about more complex stuff?
+### Multiwindow, Multi-Burn-Rate Alerts
 
-  enabled = var.enabled
-  name = "${var.service_name} ${var.env} - Latency [Flatline]"
-  query  = <<-EOT
-avg(10m):p95:trace.servlet.request by {resource_name}
- > ${local.threshold}
-EOT
+---
 
-  message = templatefile("${path.module}/message.md", {
-    service = var.service_name
-  })
-
-  monitor_thresholds = { critical = local.threshold }
-}
-```
+<!-- .slide: data-background-image="images/multi-window.png" data-background-size="auto 100%" -->
 
 ???
 
-- based on this building blocks, you can create reusable modules
+- This is way too complex to do by hand
+- Imagine scaling it up to hundreds of services
+
+---
+
+```hcl
+module "error_rate_slo_burn_rate_long_window" {
+  source  = "../../monitor"
+  enabled = var.enabled
+
+  name    = <<-EOT
+  ${var.service_name} ${var.environment} - 
+  Error Rate SLO [Long Window, ${var.burn_rate}x Burn rate]"
+EOT
+
+  query = <<-EOT
+sum(${local.period}):(
+  sum:trace.${local.metric}.request.errors{env:prod,service:${var.service_name}}
+    .rollup(sum, ${var.window_in_seconds}) /
+  sum:trace.${local.metric}.request.hits{env:prod,service:${var.service_name}}
+    .rollup(sum, ${var.window_in_seconds})
+) * 100 > ${local.threshold}
+EOT
+
+  monitor_thresholds = {
+    critical = local.threshold
+  }
+}
+```
+
+---
+
+```hcl
+module "error_rate_slo_quick_burn" {
+  source  = "../error_rate_slo_burn_rate"
+  enabled = var.enabled
+
+  service_name = var.service_name
+  environment  = var.environment
+
+  slo               = var.slo
+  burn_rate         = 14.4
+  window_in_seconds = 3600
+
+  language = var.language
+}
+```
+
+---
+
+```hcl
+module "error_rate_slo" {
+  source  = "../../monitor"
+  enabled = var.enabled
+
+  name    = "${var.service_name} - Error Rate SLO [${var.slo}%]"
+  type = "composite"
+
+  query = <<-EOT
+(module.error_rate_slo_quick_burn.long_window_id && 
+    module.error_rate_slo_quick_burn.short_window_id)
+||
+(module.error_rate_slo_slow_burn.long_window_id && 
+    module.error_rate_slo_slow_burn.short_window_id)
+EOT
+
+  message = templatefile("${path.module}/message.md", {
+    service     = var.service_name
+    environment = var.environment
+    notify      = local.notify
+  })
+}
+```
 
 ---
 
