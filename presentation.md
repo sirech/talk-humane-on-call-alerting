@@ -216,7 +216,7 @@ Improve the experience!
 
 ???
 
-- picture a slack channel with a neverending scrolling list of alerts
+- picture a slack channel with a never-ending scrolling list of alerts
 
 ---
 
@@ -556,7 +556,7 @@ EOT
 
 ???
 
-- Counter example: A german client used an internal tool for incident management. It came straight out of the 90s
+- Counter example: A German client used an internal tool for incident management. It came straight out of the 90s
 - It had none of these features
 - I wish I had a screenshot of the tool because you would understand instantly what I mean
 
@@ -581,7 +581,7 @@ EOT
 
 ## Learning 4️⃣
 ## ⬇️
-### Use tools that support you
+### Adopt tools that support you
 
 ---
 
@@ -654,28 +654,29 @@ TODO: better pic?
 
 ---
 
-## What are you measuring?
+## What are you monitoring?
+
+<h3 class="fragment fade-up">
+    <em>High-Level:</em> Close to the user
+</h3>
+
+<h3 class="fragment fade-up">
+    <em>Low-Level:</em> Close to the infrastructure
+</h3>
 
 ???
 
-- typical dashboard that measures very high level things (i.e: revenue), and very low level things (i.e: disk space)
+- alerts cover many different aspects
+- There are some high level signals closer to the user
+- There are low level signals closer to the infrastructure
 
 ---
 
-<!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
+<!-- .slide: data-background-image="images/monitoring-level.png" data-background-size="auto 100%" -->
 
 ???
 
-- If you have a synthetic flow, that answers questions about high level metrics
-
----
-
-<!-- .slide: data-background-image="images/cpu-alert.png" data-background-size="auto 100%" -->
-
-???
-
-- An alert like cpu is high doesn't say anything about business impact
-- It goes in both directions
+- What if we consider the different sources of monitoring like we do the testing pyramid?
 
 ---
 
@@ -683,32 +684,53 @@ TODO: better pic?
 
 ???
 
-- What if we consider the different sources of monitoring like we do the testing pyramid?
 - Simulating user traffic goes at the top -> synthetics
 - We go do down progressively, like RUM or APM
 - At the bottom, the monitoring of each individual piece
+- They both visualize very different things about the state of a system
 
 ---
 
-## Reflect the differences in abstraction level
+<!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
 
 ???
 
-- One thing that I've been doing lately is building dashboards top to bottom. By that I mean start with general metrics, user perspective and go down and drill into individual services
+- A synthetic is like an e2e test. It simulates the session of a user as they go through the application
+- Answer the question: Are the users able to fulfill core flows?
 
 ---
 
-<!-- .slide: data-background-image="images/dashboard.png" data-background-size="auto 100%" -->
+<!-- .slide: data-background-image="images/cpu-alert.png" data-background-size="auto 100%" -->
 
 ???
 
-- If you're answering an alert, the first question has to be: Do I need to do something?
+- An alert like CPU is high doesn't say anything about business impact
+- However: If you need to know the health of something like a database, use a more targeted alert like this one
+
+
+---
+
+## Choose the alert based on what you want to monitor
+
+???
+
+- It depends on the situation 
+- In my experience, when I'm being paged I want to know about _user impact_
+
+---
+
+<!-- .slide: data-background-image="images/dashboard.png" data-background-size="100% auto" -->
+
+???
+
+- Dashboards are notorious for the overwhelming amount of data
+- I really like to have a glance and answer the question: Are users being impacted?
 
 ---
 
 ## Learning 6️⃣
 ## ⬇️
-### Consider the abstraction level
+### Use the right abstraction level
 
 ---
 
@@ -730,9 +752,9 @@ TODO: better pic?
 ### Reduce noise ruthlessly
 ### Commit to action
 ### Leverage automation at scale
-### Use tools that support you
+### Adopt tools that support you
 ### Tune alerts constantly
-### Consider the abstraction level
+### Use the right abstraction level
 
 ???
 
