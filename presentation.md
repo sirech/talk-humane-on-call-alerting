@@ -14,11 +14,7 @@ Bad alerting adds friction to operating production software
 </h2>
 
 <h2 class="fragment fade-up">
-Common dysfunctions
-</h2>
-
-<h2 class="fragment fade-up">
-Improve the experience!
+We can do better!
 </h2>
 
 ???
@@ -145,9 +141,9 @@ Improve the experience!
 
 ---
 
-<!-- .slide: data-background-image="images/interruptions.png" data-background-size="100% auto" -->
-
 ## Constant Interruptions
+
+![interruptions](images/interruptions.png)
 
 ???
 
@@ -501,8 +497,6 @@ EOT
 
 ???
 
-- I've said in point 2 that technology alone is not the solution
-- Time to contradict myself!
 - Good tooling has a clear place in alerting: Make your life easier
 
 ---
@@ -516,49 +510,6 @@ EOT
 ---
 
 ![intersection](images/intersection.png)
-
-???
-
-- Two features that I want to mention
-
----
-
-## Auto closing
-
-???
-
-- if the alert gets opened and closed, it should be reflected in the tool and not add to the noise
-
----
-
-## Auto grouping
-
-???
-
-- If the same alert or similar group of alerts get triggered, that should be clearly grouped and not treated as individual alerts
-
----
-
-## Conditional routing
-### Based on time
-### Priority
-
-???
-
-- Routing based on conditions
--- some alerts can wait until the next day
--- some alerts require immediate action. Others can be logged as tickets
-
----
-
-## Do you take it for granted?
-### I've learned not to 😩
-
-???
-
-- Counter example: A German client used an internal tool for incident management. It came straight out of the 90s
-- It had none of these features
-- I wish I had a screenshot of the tool because you would understand instantly what I mean
 
 ---
 
@@ -576,6 +527,44 @@ EOT
 
 - Bottom line, use good tools. They're worth it
 - I mention DD and PD here because I'm familiar with them. There are many alternatives
+
+---
+
+## Do you take good 🛠️ for granted?
+### I've learned not to 😩
+
+???
+
+- Counter example: A German client used an internal tool for incident management. It came straight out of the 90s
+- It had none of these features
+- I wish I had a screenshot of the tool because you would understand instantly what I mean
+
+---
+
+## Project at a German client 
+### Ticketing system without features such as
+
+---
+
+## Auto closing
+
+<h2 class="fragment fade-up">
+  Auto grouping
+</h3>
+
+<h2 class="fragment fade-up">
+  Conditional routing
+</h3>
+
+<span class="fragment fade-up">
+🤦
+</span>
+
+???
+
+- if the alert gets opened and closed, it should be reflected in the tool and not add to the noise
+- If the same alert or similar group of alerts get triggered, that should be clearly grouped and not treated as individual alerts
+- Routing based on conditions
 
 ---
 
@@ -622,8 +611,7 @@ EOT
 
 ---
 
-## Tie thresholds to business metrics
-### (SLOs)
+## Split alerts in smaller ones
 
 TODO: better pic?
 ![split-alerts](images/split-alerts.png)
