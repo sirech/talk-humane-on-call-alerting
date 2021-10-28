@@ -193,150 +193,98 @@ We can do better!
 
 ---
 
+### Mixed abstraction levels
+### Lack of automation
 ### Noisy alerts
 ### Accepting the status quo
-### Lack of automation
 ### Inadequate tools
 ### Mismatched tuning
-### Mixed abstraction levels
 
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
-# Noisy Alerts
+# Mixed Abstraction Levels
 
 ---
 
-## When the signal is drowned by the noise
+## What are you monitoring?
+
+<h3 class="fragment fade-up">
+    <em>High-Level:</em> Close to the user
+</h3>
+
+<h3 class="fragment fade-up">
+    <em>Low-Level:</em> Close to the infrastructure
+</h3>
 
 ???
 
-- picture a slack channel with a never-ending scrolling list of alerts
+- alerts cover many different aspects
+- There are some high level signals closer to the user
+- There are low level signals closer to the infrastructure
 
 ---
 
-## Alert fatigue leads to ignored alerts
-
-<span class="bottom-right"><a href="www.atlassian.com/incident-management/on-call/alert-fatigue">atlassian.com/incident-management/on-call/alert-fatigue</a></span>
+<!-- .slide: data-background-image="images/monitoring-level.png" data-background-size="auto 100%" -->
 
 ???
 
-- this is completely expected
-- you can't constantly be in tension
+- What if we consider the different sources of monitoring like we do the testing pyramid?
 
 ---
 
-## A lot of the noise is *accidental*
+<!-- .slide: data-background-image="images/monitoring-pyramid.png" data-background-size="auto 100%" -->
 
 ???
 
-- Akin to the concept of accidental complexity
--- A certain amount of complexity is unavoidable
--- However, the wrong architecture can introduce avoidable complexity
+- Simulating user traffic goes at the top -> synthetics
+- We go do down progressively, like RUM or APM
+- At the bottom, the monitoring of each individual piece
+- They both visualize very different things about the state of a system
 
 ---
 
-<h2 class="right">Isn't this Kubernetes job?</h2>
-
-<!-- .slide: data-background-image="images/low-pods-alert.png" data-background-size="auto 100%" -->
+<!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
 
 ???
 
-- alerts where action isn't clear.
-- Kubernetes restarts pods all the time without intervention. It's kind of the point of using it
-- If it's expected, why monitor it?
+- A synthetic is like an e2e test. It simulates the session of a user as they go through the application
+- Answer the question: Are the users able to fulfill core flows?
 
 ---
 
-<h2 class="right">What should I do?</h2>
-
-<!-- .slide: data-background-image="images/unclear-warning.png" data-background-size="100% auto" -->
+<!-- .slide: data-background-image="images/cpu-alert.png" data-background-size="auto 100%" -->
 
 ???
 
-- alerts where urgency isn't clear.
+- An alert like CPU is high doesn't say anything about business impact
+- However: If you need to know the health of something like a database, use a more targeted alert like this one
+
 
 ---
 
-## Warnings are evil
-### Make them failures or ignore them
+## Choose the alert based on what you want to monitor
 
 ???
 
-- That's a strong statement, so I'm sure there are exceptions
-- Still, making decisions more binary helps reducing the noise
+- It depends on the situation 
+- In my experience, when I'm being paged I want to know about _user impact_
 
 ---
 
-## Delete things you don't need!
-### Like, seriously
+<!-- .slide: data-background-image="images/dashboard.png" data-background-size="100% auto" -->
+
+???
+
+- Dashboards are notorious for the overwhelming amount of data
+- I really like to have a glance and answer the question: Are users being impacted?
 
 ---
 
 ## Learning 1️⃣
 ## ⬇️
-### Reduce noise ruthlessly
-
-???
-
-- I feel like I'm pointing the obvious
-- And yet, this is a pattern that keeps repeating wherever I go
-
----
-
-<!-- .slide: data-background-color="var(--r-main-color)"  -->
-
-# Accepting the Status Quo
-
----
-
-## "It's always been like this"
-
-???
-
-- here are some actual quotes
-
----
-
-> When that alert wakes me up I just snooze it and keep sleeping
-
-???
-
-- This is an actual quote, I'm not making it up
--- Happened in a previous project that I joined as a Tech Lead
-- I've seen it where I work now. People get used to things that *are not* okay
-
----
-
-> We know this doesn't work, but we can't do anything about it
-
-???
-
-- The opposite of you build it you run it
-- You get the incidents but can't make the required changes
-
----
-
-<!-- .slide: data-background-image="images/slowing-monolith.png" data-background-size="100% auto" -->
-
-<h2 class="bottom-right">Long-lived issues</h2>
-
-???
-
-- performance degrades over time until it reaches a breaking point (spikes in the chart)
-- notice the timeline. We're talking about months!
-
----
-
-## Learning 2️⃣
-## ⬇️
-### Act decisively
-
-???
-
-- This starts at the post-mortem level
-- you **have** to commit to carry the actions decided there, and do it swiftly
+### Use the right alert
 
 ---
 
@@ -541,13 +489,151 @@ EOT
 
 ---
 
-## Learning 3️⃣
+## Learning 2️⃣
 ## ⬇️
 ### Leverage automation at scale
 
 ???
 
 - In my experience, nobody has disagreed openly about this 
+
+---
+
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
+
+# Noisy Alerts
+
+---
+
+## When the signal is drowned by the noise
+
+???
+
+- picture a slack channel with a never-ending scrolling list of alerts
+
+---
+
+## Alert fatigue leads to ignored alerts
+
+<span class="bottom-right"><a href="www.atlassian.com/incident-management/on-call/alert-fatigue">atlassian.com/incident-management/on-call/alert-fatigue</a></span>
+
+???
+
+- this is completely expected
+- you can't constantly be in tension
+
+---
+
+## A lot of the noise is *accidental*
+
+???
+
+- Akin to the concept of accidental complexity
+-- A certain amount of complexity is unavoidable
+-- However, the wrong architecture can introduce avoidable complexity
+
+---
+
+<h2 class="right">Isn't this Kubernetes job?</h2>
+
+<!-- .slide: data-background-image="images/low-pods-alert.png" data-background-size="auto 100%" -->
+
+???
+
+- alerts where action isn't clear.
+- Kubernetes restarts pods all the time without intervention. It's kind of the point of using it
+- If it's expected, why monitor it?
+
+---
+
+<h2 class="right">What should I do?</h2>
+
+<!-- .slide: data-background-image="images/unclear-warning.png" data-background-size="100% auto" -->
+
+???
+
+- alerts where urgency isn't clear.
+
+---
+
+## Warnings are evil
+### Make them failures or ignore them
+
+???
+
+- That's a strong statement, so I'm sure there are exceptions
+- Still, making decisions more binary helps reducing the noise
+
+---
+
+## Delete things you don't need!
+### Like, seriously
+
+---
+
+## Learning 3️⃣
+## ⬇️
+### Reduce noise ruthlessly
+
+???
+
+- I feel like I'm pointing the obvious
+- And yet, this is a pattern that keeps repeating wherever I go
+
+---
+
+<!-- .slide: data-background-color="var(--r-main-color)"  -->
+
+# Accepting the Status Quo
+
+---
+
+## "It's always been like this"
+
+???
+
+- here are some actual quotes
+
+---
+
+> When that alert wakes me up I just snooze it and keep sleeping
+
+???
+
+- This is an actual quote, I'm not making it up
+-- Happened in a previous project that I joined as a Tech Lead
+- I've seen it where I work now. People get used to things that *are not* okay
+
+---
+
+> We know this doesn't work, but we can't do anything about it
+
+???
+
+- The opposite of you build it you run it
+- You get the incidents but can't make the required changes
+
+---
+
+<!-- .slide: data-background-image="images/slowing-monolith.png" data-background-size="100% auto" -->
+
+<h2 class="bottom-right">Long-lived issues</h2>
+
+???
+
+- performance degrades over time until it reaches a breaking point (spikes in the chart)
+- notice the timeline. We're talking about months!
+
+---
+
+## Learning 4️⃣
+## ⬇️
+### Act decisively
+
+???
+
+- This starts at the post-mortem level
+- you **have** to commit to carry the actions decided there, and do it swiftly
 
 ---
 
@@ -628,7 +714,7 @@ EOT
 
 ---
 
-## Learning 4️⃣
+## Learning 5️⃣
 ## ⬇️
 ### Adopt tools that support you
 
@@ -689,96 +775,9 @@ TODO: better pic?
 
 ---
 
-## Learning 5️⃣
-## ⬇️
-### Tune alerts often
-
-
----
-
-<!-- .slide: data-background-color="var(--r-main-color)"  -->
-
-# Mixed Abstraction Levels
-
----
-
-## What are you monitoring?
-
-<h3 class="fragment fade-up">
-    <em>High-Level:</em> Close to the user
-</h3>
-
-<h3 class="fragment fade-up">
-    <em>Low-Level:</em> Close to the infrastructure
-</h3>
-
-???
-
-- alerts cover many different aspects
-- There are some high level signals closer to the user
-- There are low level signals closer to the infrastructure
-
----
-
-<!-- .slide: data-background-image="images/monitoring-level.png" data-background-size="auto 100%" -->
-
-???
-
-- What if we consider the different sources of monitoring like we do the testing pyramid?
-
----
-
-<!-- .slide: data-background-image="images/monitoring-pyramid.png" data-background-size="auto 100%" -->
-
-???
-
-- Simulating user traffic goes at the top -> synthetics
-- We go do down progressively, like RUM or APM
-- At the bottom, the monitoring of each individual piece
-- They both visualize very different things about the state of a system
-
----
-
-<!-- .slide: data-background-image="images/synthetic.png" data-background-size="100% auto" -->
-
-???
-
-- A synthetic is like an e2e test. It simulates the session of a user as they go through the application
-- Answer the question: Are the users able to fulfill core flows?
-
----
-
-<!-- .slide: data-background-image="images/cpu-alert.png" data-background-size="auto 100%" -->
-
-???
-
-- An alert like CPU is high doesn't say anything about business impact
-- However: If you need to know the health of something like a database, use a more targeted alert like this one
-
-
----
-
-## Choose the alert based on what you want to monitor
-
-???
-
-- It depends on the situation 
-- In my experience, when I'm being paged I want to know about _user impact_
-
----
-
-<!-- .slide: data-background-image="images/dashboard.png" data-background-size="100% auto" -->
-
-???
-
-- Dashboards are notorious for the overwhelming amount of data
-- I really like to have a glance and answer the question: Are users being impacted?
-
----
-
 ## Learning 6️⃣
 ## ⬇️
-### Use the right alert
+### Tune alerts often
 
 ---
 
@@ -788,21 +787,21 @@ TODO: better pic?
 
 ---
 
+### Mixed abstraction levels
+### Lack of automation
 ### Noisy alerts
 ### Accepting the status quo
-### Lack of automation
 ### Inadequate tools
 ### Mismatched tuning
-### Mixed abstraction levels
 
 ---
 
+### Use the right alert
+### Leverage automation at scale
 ### Reduce noise ruthlessly
 ### Act decisively
-### Leverage automation at scale
 ### Adopt tools that support you
 ### Tune alerts often
-### Use the right alert
 
 ???
 
