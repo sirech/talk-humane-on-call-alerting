@@ -196,7 +196,6 @@ We can do better!
 ### Mixed abstraction levels
 ### Lack of automation
 ### Noisy alerts
-### Accepting the status quo
 ### Inadequate tools
 ### Mismatched tuning
 
@@ -566,36 +565,6 @@ EOT
 
 ---
 
-## Delete things you don't need!
-### Like, seriously
-
----
-
-## Learning 3️⃣
-## ⬇️
-### Reduce noise ruthlessly
-
-???
-
-- I feel like I'm pointing the obvious
-- And yet, this is a pattern that keeps repeating wherever I go
-
----
-
-<!-- .slide: data-background-color="var(--r-main-color)"  -->
-
-# Accepting the Status Quo
-
----
-
-## "It's always been like this"
-
-???
-
-- here are some actual quotes
-
----
-
 > When that alert wakes me up I just snooze it and keep sleeping
 
 ???
@@ -603,15 +572,6 @@ EOT
 - This is an actual quote, I'm not making it up
 -- Happened in a previous project that I joined as a Tech Lead
 - I've seen it where I work now. People get used to things that *are not* okay
-
----
-
-> We know this doesn't work, but we can't do anything about it
-
-???
-
-- The opposite of you build it you run it
-- You get the incidents but can't make the required changes
 
 ---
 
@@ -626,14 +586,19 @@ EOT
 
 ---
 
-## Learning 4️⃣
+## Delete things you don't need!
+### Like, seriously
+
+---
+
+## Learning 3️⃣
 ## ⬇️
-### Act decisively
+### Reduce noise ruthlessly
 
 ???
 
-- This starts at the post-mortem level
-- you **have** to commit to carry the actions decided there, and do it swiftly
+- I feel like I'm pointing the obvious
+- And yet, this is a pattern that keeps repeating wherever I go
 
 ---
 
@@ -714,7 +679,7 @@ EOT
 
 ---
 
-## Learning 5️⃣
+## Learning 4️⃣
 ## ⬇️
 ### Adopt tools that support you
 
@@ -757,9 +722,8 @@ EOT
 
 ---
 
-## Split alerts in smaller ones
+## Multiple small alerts
 
-TODO: better pic?
 ![split-alerts](images/split-alerts.png)
 
 ---
@@ -775,7 +739,7 @@ TODO: better pic?
 
 ---
 
-## Learning 6️⃣
+## Learning 5️⃣
 ## ⬇️
 ### Tune alerts often
 
@@ -790,7 +754,6 @@ TODO: better pic?
 ### Mixed abstraction levels
 ### Lack of automation
 ### Noisy alerts
-### Accepting the status quo
 ### Inadequate tools
 ### Mismatched tuning
 
@@ -799,7 +762,6 @@ TODO: better pic?
 ### Use the right alert
 ### Leverage automation at scale
 ### Reduce noise ruthlessly
-### Act decisively
 ### Adopt tools that support you
 ### Tune alerts often
 
