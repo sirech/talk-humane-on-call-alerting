@@ -201,6 +201,7 @@ We can do better!
 
 ???
 
+- 18/78
 - I've spent the past two years in full-time on-call, and have operated applications as a developer before that
 - dysfunctions, plus ways to address them
 
@@ -306,6 +307,7 @@ We can do better!
 
 ???
 
+- 29/78
 - people get used to do things by hand
 
 ---
@@ -512,6 +514,10 @@ EOT
 
 # Noisy Alerts
 
+???
+
+- 45/78
+
 ---
 
 ## When the signal is drowned by the noise
@@ -616,6 +622,7 @@ EOT
 
 ???
 
+- 56/78
 - Good tooling has a clear place in alerting: Make your life easier
 
 ---
@@ -702,6 +709,7 @@ EOT
 
 ???
 
+- 66/78
 - tuning alerts is tricky
 
 ---
