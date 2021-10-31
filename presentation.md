@@ -5,6 +5,8 @@
 
 ???
 
+- this talk is about on-call
+- more specifically, it's about alerting
 - before I get started, how many of you are part of a regular on-call rotation?
 
 ---
@@ -19,9 +21,9 @@ We can do better!
 
 ???
 
-- This talk is about alerting when operating production software. Part of the topic of being on-call
-- I want to talk about things that make the experience difficult
-- Actions to make it better
+- alerting, when done wrong, is a significant source of friction
+- we can do better than that!
+- That's the message of this talk. There are concrete actions we can take to fix common alerting issues 
 
 ---
 
@@ -31,7 +33,8 @@ We can do better!
 
 ???
 
-- What is actually on-call? Let's spend a bit of time to talk about it first
+- I imagine most people here are familiar with on-call
+- let me quickly talk about my understanding of it
 
 ---
 
@@ -40,7 +43,6 @@ We can do better!
 
 ???
 
-- it can happen during business hours or outside of them
 - It's not an active thing.
 - It's reactive. You're available in case you're needed
 
@@ -53,7 +55,7 @@ We can do better!
 ???
 
 - Nobody should do on-call alone, although this happens sometimes, sadly
-- weekly rotations
+- weekly rotations, 24x7 or maybe only during business hours
 
 ---
 
@@ -69,6 +71,11 @@ We can do better!
 
 ## Reason 1
 ### Users expect constant availability
+
+???
+
+- people expect to pull their phone and immediately get what they want from our application
+- exception: presenting your taxes, at least in Spain
 
 ---
 
@@ -90,7 +97,7 @@ We can do better!
 - A second answer for "why do this to ourselves?"
 - developers have "skin in the game"
 - Build more resilient systems
-- Reduce handovers
+- Less handovers, less overload for centralized operations team
 
 ---
 
@@ -102,11 +109,14 @@ We can do better!
 
 - on-call is a big topic
 - I'm going to focus on alerting
-- Before that, let's do a short introduction to the topic
 
 ---
 
 ## Detect problems in production before your customers do
+
+???
+
+- alternatively, nobody wants to be the receiver of an escalation email coming from top management
 
 ---
 
@@ -178,6 +188,11 @@ We can do better!
 
 <!-- .slide: data-background-image="images/explosion.jpeg" data-background-size="100% auto" -- >
 
+???
+
+- I could go on, but you get the point
+- alerting _can_ suck
+
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
@@ -186,10 +201,8 @@ We can do better!
 
 ???
 
-- as I said I want to talk about alerting
--- the on-call topic is much more than alerts
 - I've spent the past two years in full-time on-call, and have operated applications as a developer before that
-- This are some of the dysfunctions I've found
+- dysfunctions, plus ways to address them
 
 ---
 
@@ -249,6 +262,7 @@ We can do better!
 ???
 
 - A synthetic is like an e2e test. It simulates the session of a user as they go through the application
+- run regularly from different places
 - Answer the question: Are the users able to fulfill core flows?
 
 ---
@@ -267,8 +281,7 @@ We can do better!
 
 ???
 
-- It depends on the situation 
-- In my experience, when I'm being paged I want to know about _user impact_
+- coming back to our situation, if you get paged you want to know about _user impact_
 
 ---
 
@@ -297,15 +310,24 @@ We can do better!
 
 ---
 
-## Manual work means non-reproducible results
+## Manual work is not reproducible
+
+???
+
+- just think of the AWS documentation. To set up something it's a gigantic article with a thousand screenshots, when a snippet of code could do the same
 
 ---
 
 ## Automation is crucial in alerting
 
+---
+
+<!-- .slide: data-background-image="images/IaC.png" data-background-size="auto 100%" -->
+
 ???
 
-- Why?
+- monitoring/alerting is infrastructure
+- infrastructure is handled with code
 
 ---
 
@@ -316,18 +338,6 @@ Reduce maintenance
 <h2 class="fragment fade-up">
 Spread best practices
 </h2>
-
----
-
-<!-- .slide: data-background-image="images/IaC.png" data-background-size="auto 100%" -->
-
-???
-
-- monitoring/alerting is infrastructure
-
----
-
-## Any serious monitoring provider allows automation
 
 ---
 
@@ -494,7 +504,7 @@ EOT
 
 ???
 
-- In my experience, nobody has disagreed openly about this 
+- if there's one thing to take from this talk, it's this one
 
 ---
 
@@ -560,8 +570,7 @@ EOT
 
 ???
 
-- That's a strong statement, so I'm sure there are exceptions
-- Still, making decisions more binary helps reducing the noise
+- binary decisions (act/ignore) reduce noise
 
 ---
 
@@ -571,7 +580,7 @@ EOT
 
 - This is an actual quote, I'm not making it up
 -- Happened in a previous project that I joined as a Tech Lead
-- I've seen it where I work now. People get used to things that *are not* okay
+- we can not let it get to this
 
 ---
 
@@ -581,7 +590,6 @@ EOT
 
 ???
 
-- performance degrades over time until it reaches a breaking point (spikes in the chart)
 - notice the timeline. We're talking about months!
 
 ---
@@ -644,16 +652,14 @@ EOT
 ## Do you take good 🛠️ for granted?
 ### I've learned not to 😩
 
-???
-
-- Counter example: A German client used an internal tool for incident management. It came straight out of the 90s
-- It had none of these features
-- I wish I had a screenshot of the tool because you would understand instantly what I mean
-
 ---
 
 ## Project at a German client 
 ### Ticketing system without features such as
+
+???
+
+- Counter example: A German client used an internal tool for incident management. It came straight out of the 90s
 
 ---
 
@@ -676,12 +682,17 @@ EOT
 - if the alert gets opened and closed, it should be reflected in the tool and not add to the noise
 - If the same alert or similar group of alerts get triggered, that should be clearly grouped and not treated as individual alerts
 - Routing based on conditions
+- 150 emails / incident, they might not even be needed anymore
 
 ---
 
 ## Learning 4️⃣
 ## ⬇️
 ### Adopt tools that support you
+
+???
+
+- people who enter rotations are making a commitment. They're owed the best tools possible
 
 ---
 
@@ -698,6 +709,10 @@ EOT
 ## Minimize
 ### false _positives_
 ### false _negatives_
+
+???
+
+- these two objectives conflict with each other
 
 ---
 
@@ -726,6 +741,11 @@ EOT
 
 ![split-alerts](images/split-alerts.png)
 
+???
+
+- say you want to measure big sudden spikes of errors, and also an elevated error rate over a longer period of time 
+- one alert for both will inevitable be undertuned or oversensitive
+
 ---
 
 ## Reliable alerts are hard!
@@ -743,11 +763,19 @@ EOT
 ## ⬇️
 ### Tune alerts often
 
+???
+
+- still, getting alerts right is an iterative process
+
 ---
 
 <!-- .slide: data-background-color="var(--r-main-color)"  -->
 
 # Dysfunctions and Learnings Side by Side
+
+???
+
+- let's finish this by going over the dysfunctions again, and the actions to take
 
 ---
 
@@ -775,10 +803,7 @@ EOT
 
 ???
 
-- Even the most accurately tuned alerts will trigger
--- How to handle them?
--- How to improve?
-- The topic is big enough to cover book(s)
+- important area, but part of a bigger topic
 
 ---
 
